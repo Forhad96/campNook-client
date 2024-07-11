@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  body{
+    @apply bg-secondary/10
+  }
+}
+@layer components {
+  .card {
+    @apply bg-secondary/15  flex items-center justify-center flex-col  font-bold text-[18px] md:text-[22px] space-y-10 text-opacity-70 lg:text-[32px];
+  }
+}
+/* * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+} */
