@@ -2,8 +2,9 @@ import About from "../pages/about/About";
 import Cart from "../pages/cart/Cart";
 import Faq from "../pages/faq/Faq";
 import Home from "../pages/home/Home";
-import ProductDetails from "../pages/products/ProductDetails";
-import Products from "../pages/products/Products";
+import ProductDetails from "../components/pages/products/ProductDetails";
+import Products from "../pages/Products";
+
 
 export const homePaths = [
   {
@@ -29,7 +30,7 @@ export const homePaths = [
   {
     name: "FAQ",
     path: "faq",
-    element: <Faq/>,
+    element: <Faq />,
   },
   {
     name: "About",

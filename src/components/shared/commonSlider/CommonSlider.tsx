@@ -96,7 +96,7 @@ const CommonSlider: React.FC<CommonSliderProps> = ({
         className={`swiper-container commonSwiper ${className}`}
         {...props}
         watchOverflow={true}
-        breakpoints={breakpoints}
+        // breakpoints={breakpoints}
       >
         {React.Children.map(children, (child, index) => (
           <SwiperSlide key={index} className="swiper-slide">
