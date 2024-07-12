@@ -16,7 +16,7 @@ const Container: FC<ContainerProps> = ({
   px = "",
 }): JSX.Element => {
 
-  return <div className={`${className} ${py} ${px} max-w-[1900px] w-full mx-auto`}>{children}</div>;
+  return <div className={`${className} ${py} ${px} max-w-[1200px] w-full mx-auto`}>{children}</div>;
 };
 
 export default Container;

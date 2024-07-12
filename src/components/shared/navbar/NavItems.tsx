@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { homePaths } from "../../routes/home.routes";
+import { homePaths } from "../../../routes/home.routes";
 
 interface NavItemsProps {
   isToggleOpen: boolean;
