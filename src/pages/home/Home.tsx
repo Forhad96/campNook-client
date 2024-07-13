@@ -4,13 +4,13 @@ import Activity from "../../test/Activity";
 import Benefit from "../../test/Benefit";
 import Categories from "../../test/Categories";
 import NewProducts from "../../test/NewProducts";
-import TrendingCollection from "../../test/TrendingCollection";
-import Products from "../../components/pages/products/ProductCard";
+import NewProducts2 from "@/test/NewProducts2";
 
 const Home = () => {
   return (
     <div className="">
       <Banner />
+      <NewProducts2/>
       <BestSelling />
       <Activity />
       <Benefit />

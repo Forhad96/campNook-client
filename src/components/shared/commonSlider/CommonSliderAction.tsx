@@ -1,4 +1,4 @@
-import { ArrowIconLeft, ArrowIconRight } from "../../Icons/Icons";
+import { ArrowIconLeft, ArrowIconRight } from "../Icons/Icons";
 type TCommonSliderActionProps = {
   pagination?: boolean;
   sliderId: string;

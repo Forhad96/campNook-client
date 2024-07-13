@@ -41,7 +41,7 @@ const SlideItem = ({ items,index }) => {
         <h5 className="text-5xl text-white font-semibold mt-4">
           Ultimate best tour for your life
         </h5>
-<button className="bg-accent p-2 px-4 rounded-md text-primary font-medium"> Shop now</button>
+<button className="bg-accent p-2 px-4 rounded-md text-brandPrimary font-medium"> Shop now</button>
       </div>
     </div>
   );

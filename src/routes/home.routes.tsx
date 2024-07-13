@@ -1,8 +1,8 @@
+import ProductDetails from "@/pages/ProductDetails";
 import About from "../pages/about/About";
 import Cart from "../pages/cart/Cart";
 import Faq from "../pages/faq/Faq";
 import Home from "../pages/home/Home";
-import ProductDetails from "../components/pages/products/ProductDetails";
 import Products from "../pages/Products";
 
 
@@ -16,12 +16,15 @@ export const homePaths = [
     name: "Products",
     path: "products",
     element: <Products />,
+    children: [
+      {
+        name: "Products",
+        path: "products/:details",
+        element: <ProductDetails />,
+      },
+    ],
   },
-  {
-    name: "Products",
-    path: "products/:details",
-    element: <ProductDetails />,
-  },
+
   {
     name: "Cart",
     path: "cart",

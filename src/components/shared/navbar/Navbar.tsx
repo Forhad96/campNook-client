@@ -42,7 +42,7 @@ const Topbar = () => {
       <div className="mx-auto grid w-full max-w-full grid-cols-4 gap-6 px-6 py-2 text-sm text-slate-500 md:grid-cols-8 lg:max-w-5xl lg:grid-cols-12 xl:max-w-7xl 2xl:max-w-[96rem]">
         <div className="col-span-2 items-center md:col-span-4 lg:col-span-6">
           <a
-            href="javascript:void(0)"
+            href="/"
             className="flex items-center gap-2 transition-colors duration-300 hover:text-emerald-500"
           >
             <svg
@@ -69,7 +69,7 @@ const Topbar = () => {
         <div className="col-span-2 items-center justify-end gap-6 md:col-span-4 lg:col-span-6">
           <div className="flex items-center justify-end gap-4">
             <a
-              href="javascript:void(0)"
+              href="/"
               className="transition-colors duration-300 hover:text-emerald-500"
             >
               <svg
@@ -94,7 +94,7 @@ const Topbar = () => {
               </svg>
             </a>
             <a
-              href="javascript:void(0)"
+              href="/"
               className="transition-colors duration-300 hover:text-emerald-500"
             >
               <svg
@@ -117,7 +117,7 @@ const Topbar = () => {
               </svg>
             </a>
             <a
-              href="javascript:void(0)"
+              href="/"
               className="transition-colors duration-300 hover:text-emerald-500"
             >
               <svg
