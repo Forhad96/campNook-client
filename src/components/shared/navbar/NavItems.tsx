@@ -23,7 +23,7 @@ const NavItems: React.FC<NavItemsProps> = ({ isToggleOpen }) => {
             to={route.path}
             className={({ isActive }) =>
               `flex items-center gap-2 py-4 transition-colors duration-300 ${
-                isActive ? "text-emerald-500" : "hover:text-emerald-500"
+                isActive ? "text-brandSecondary" : "hover:text-brandSecondary"
               } focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8`
             }
           >

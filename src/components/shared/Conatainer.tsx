@@ -12,7 +12,7 @@ interface ContainerProps {
 const Container: FC<ContainerProps> = ({
   children,
   className = "",
-  py = "py-10",
+  py = "",
   px = "",
 }): JSX.Element => {
 
