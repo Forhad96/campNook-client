@@ -1,7 +1,10 @@
-const ProductInfo = () => (
+import { IProduct } from "../products/types";
+import { Button } from "../ui/button";
+
+const ProductInfo = ({name,category,price}:IProduct) => (
   <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
     <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-      Afro-Brazillian Coffee
+      {name}
     </h1>
     <div className="mt-5 flex items-center">
       <div className="flex items-center">
@@ -20,7 +23,7 @@ const ProductInfo = () => (
       <p className="ml-2 text-sm font-medium text-gray-500">1,209 Reviews</p>
     </div>
     <ProductOptions />
-    <PriceAndAddToCart />
+    <PriceAndAddToCart price={price} />
     <ProductFeatures />
   </div>
 );
@@ -31,15 +34,15 @@ export default ProductInfo
 const ProductOptions = () => (
   <>
     <OptionSelector
-      title="Coffee Type"
-      options={["Powder", "Whole Bean", "Groud"]}
+      title="Select Payment Methods"
+      options={["Stripe", "Bkash", "Nogod"]}
       name="type"
     />
-    <OptionSelector
+    {/* <OptionSelector
       title="Choose subscription"
       options={["4 Months", "8 Months", "12 Months"]}
       name="subscription"
-    />
+    /> */}
   </>
 );
 
@@ -65,15 +68,15 @@ const OptionSelector = ({ title, options, name }) => (
   </>
 );
 
-const PriceAndAddToCart = () => (
+const PriceAndAddToCart = ({price}:Partial<IProduct>) => (
   <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
     <div className="flex items-end">
-      <h1 className="text-3xl font-bold">$60.50</h1>
-      <span className="text-base">/month</span>
+      <h1 className="text-3xl font-bold">${price}</h1>
+      {/* <span className="text-base">/month</span> */}
     </div>
-    <button
+    <Button
       type="button"
-      className="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800"
+      className="bg-brandSecondary hover:text-brandPrimary hover:bg-highlight"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +93,7 @@ const PriceAndAddToCart = () => (
         />
       </svg>
       Add to cart
-    </button>
+    </Button>
   </div>
 );
 

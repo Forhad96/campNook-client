@@ -1,4 +1,6 @@
-const ProductTabs = () => (
+import { FC } from "react";
+
+const ProductTabs:FC = ({name,description}) => (
   <div className="lg:col-span-3">
     <div className="border-b border-gray-300">
       <nav className="flex gap-4">
@@ -23,8 +25,8 @@ const ProductTabs = () => (
       </nav>
     </div>
     <div className="mt-8 flow-root sm:mt-12">
-      <h1 className="text-3xl font-bold text-gray-900">Full Range Coffee</h1>
-      <p className="mt-4">{/* Description content */}</p>
+      <h1 className="text-3xl font-bold text-gray-900">{name}</h1>
+      <p className="mt-4">{description}</p>
     </div>
   </div>
 );
