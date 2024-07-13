@@ -3,11 +3,11 @@ import {
   FieldValues,
   FormProvider,
   SubmitHandler,
-  useForm
+  useForm,
 } from "react-hook-form";
 
 type TDefaultValues = {
-  userId: string;
+  email: string;
   password: string;
 };
 
