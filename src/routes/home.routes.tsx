@@ -18,7 +18,7 @@ export const homePaths = [
     children: [
       {
         name: "Products",
-        path: "products/:details",
+        path: "products/:id",
         element: <ProductDetails />,
       },
     ],

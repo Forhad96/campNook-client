@@ -2,19 +2,16 @@ import React from "react";
 import { IProduct } from "./types";
 import demoProduct from "/demoProduct.png";
 import { LoveIcon, ShopingCartIcon } from "../shared/Icons/Icons";
-interface Product {
-  id: number;
-  brand: string;
-  name: string;
-  price: number;
-  originalPrice: number;
-  imageUrl: string;
-}
+import { useNavigate } from "react-router-dom";
 
 const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
+  const navigate = useNavigate()
   return (
-    <div className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-      <a href="#">
+    <div
+      onClick={() => navigate(`/products/${product?._id}`)}
+      className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+    >
+
         <img
           src={demoProduct}
           alt={product.name}
@@ -42,7 +39,6 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
             </div>
           </div>
         </div>
-      </a>
     </div>
   );
 };
