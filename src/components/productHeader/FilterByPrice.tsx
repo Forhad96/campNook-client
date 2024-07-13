@@ -33,14 +33,14 @@ const FilterByPrice = (): JSX.Element => {
               onChange={(e) => setMinPrice(e.target.value)}
               type="number"
               defaultValue={minPrice}
-              className="my-5 bg-secondary placeholder:text-[#c8c8c8] text-[#ededed] "
+              className="my-5 bg-brandSecondary placeholder:text-[#c8c8c8] text-[#ededed] "
             />
             <Input
               placeholder="Max price"
               type="number"
               defaultValue={maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
-              className="placeholder:text-[#c8c8c8] my-5 bg-[#4c781ab4] text-[#ededed] "
+              className="placeholder:text-[#c8c8c8] my-5 bg-brandSecondary text-[#ededed] "
             />
           </div>
           <div className="space-y-6">
@@ -53,6 +53,7 @@ const FilterByPrice = (): JSX.Element => {
             <Slider
               defaultValue={[minPrice]}
               max={10000}
+              className=""
               step={1}
               onValueChange={(value) => setMaxPrice(value)}
             />

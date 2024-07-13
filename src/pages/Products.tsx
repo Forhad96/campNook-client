@@ -1,7 +1,7 @@
 import { useAppSelector } from "@/redux/hooks";
-import ProductCard from "../components/pages/products/ProductCard";
-import ProductHeader from "../components/pages/products/productHeader/ProductHeader";
-import { IProduct } from "../components/pages/products/types";
+import ProductCard from "../components/products/ProductCard";
+import ProductHeader from "../components/productHeader/ProductHeader";
+import { IProduct } from "../components/products/types";
 import Container from "../components/shared/Conatainer";
 import { useGetAllProductsQuery } from "../redux/features/products/productsApi";
 import {

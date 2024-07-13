@@ -1,7 +1,7 @@
 import { useState } from "react";
-import CommonSlider from "../../../shared/commonSlider/CommonSlider";
-import Container from "../../../shared/Conatainer";
 import banner1 from '/images/banner/banner1.png';
+import CommonSlider from "../shared/commonSlider/CommonSlider";
+import Container from "../shared/Conatainer";
 const Banner = () => {
       const [swiperState, setSwiperState] = useState({
         isBeginning: true,

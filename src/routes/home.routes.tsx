@@ -1,10 +1,9 @@
 import ProductDetails from "@/pages/ProductDetails";
-import About from "../pages/about/About";
-import Cart from "../pages/cart/Cart";
-import Faq from "../pages/faq/Faq";
-import Home from "../pages/home/Home";
+import About from "../pages/About";
+import Cart from "../pages/Cart";
+import Faq from "../components/faq/Faq";
+import Home from "../pages/Home";
 import Products from "../pages/Products";
-
 
 export const homePaths = [
   {

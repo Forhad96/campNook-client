@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../../shared/Conatainer";
+import Container from "../shared/Conatainer";
 
 const BestSelling: React.FC = () => {
   const products = [

@@ -10,7 +10,7 @@ const SearchInput = () => {
     <>
       <Input
         type="text"
-        onChange={(e) => dispatch(setSearch(e.target.value))}
+        onBlur={(e) => dispatch(setSearch(e.target.value))}
         className=" text-xl p-4 font-poppins rounded-lg  w-[96%] mx-auto right-[2%] px-8"
         placeholder="Search.."
       />
