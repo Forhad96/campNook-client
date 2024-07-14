@@ -1,12 +1,18 @@
-import { FC, memo } from "react";
+import { FC, useState, useCallback, memo, useEffect } from "react";
 import { ICartItem } from "./types";
-
+import {
+  DecrementIcon,
+  IncrementIcon,
+  ShopingCartIcon,
+} from "../shared/Icons/Icons";
+import { useUpdateCartMutation } from "@/redux/features/cart/cartApi";
 import ChooseQuantity from "./ChooseQuantity";
+import { Button } from "../ui/button";
 
 type CartItemProps = ICartItem & { email: string | undefined };
 
-const CartItem: FC<CartItemProps> = memo(({ product, quantity,email}) => {
-  const { images, name, description, price, stock,_id } = product;
+const CartItem: FC<CartItemProps> = memo(({ product, quantity, email }) => {
+  const { images, name, description, price, stock, _id } = product;
 
   return (
     <div className="md:flex items-stretch py-8 md:py-10 lg:py-8 border-t border-gray-50">
@@ -30,7 +36,9 @@ const CartItem: FC<CartItemProps> = memo(({ product, quantity,email}) => {
           <p className="text-base font-black leading-none text-gray-800 dark:text-white">
             {name}
           </p>
-          <ChooseQuantity quantity={quantity} stock={stock} productId={_id} />
+          <Button>
+            <ShopingCartIcon />
+          </Button>
         </div>
         <p className="text-xs leading-3 text-gray-600 dark:text-white pt-2">
           Height: 4inc
@@ -60,4 +68,3 @@ const CartItem: FC<CartItemProps> = memo(({ product, quantity,email}) => {
 });
 
 export default CartItem;
-

@@ -175,21 +175,40 @@ const LoveIcon = () => {
   );
 };
 
-const ShopingCartIcon = () => {
+const ShoppingBagPlusIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="20"
       height="20"
       fill="currentColor"
-      className="bi bi-bag-plus"
+      className="bi bi-bag-plus me-2"
       viewBox="0 0 16 16"
+      
     >
       <path
         fillRule="evenodd"
         d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z"
       />
       <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+    </svg>
+  );
+};
+const ShoppingBagIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="shrink-0 mr-3 h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+      />
     </svg>
   );
 };
@@ -264,7 +283,8 @@ export {
   SearchIcon,
   SortIcon,
   LoveIcon,
-  ShopingCartIcon,
+  ShoppingBagPlusIcon,
+  ShoppingBagIcon,
   IncrementIcon,
   DecrementIcon,
   UserIcon,

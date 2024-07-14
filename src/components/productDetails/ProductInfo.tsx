@@ -1,11 +1,13 @@
+import { FC } from "react";
 import { IProduct } from "../products/types";
+import { ShoppingBagPlusIcon } from "../shared/Icons/Icons";
 import { Button } from "../ui/button";
+import { useAddToCartMutation } from "@/redux/features/cart/cartApi";
+import Loader from "../shared/Loader/Loader";
 
-const ProductInfo = ({name,category,price}:IProduct) => (
+const ProductInfo = ({ name, category, price, _id }: IProduct) => (
   <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-    <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-      {name}
-    </h1>
+    <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">{name}</h1>
     <div className="mt-5 flex items-center">
       <div className="flex items-center">
         {[...Array(5)].map((_, index) => (
@@ -23,13 +25,11 @@ const ProductInfo = ({name,category,price}:IProduct) => (
       <p className="ml-2 text-sm font-medium text-gray-500">1,209 Reviews</p>
     </div>
     <ProductOptions />
-    <PriceAndAddToCart price={price} />
+    <PriceAndAddToCart price={price} id={_id} />
     <ProductFeatures />
   </div>
 );
-export default ProductInfo
-
-
+export default ProductInfo;
 
 const ProductOptions = () => (
   <>
@@ -68,34 +68,33 @@ const OptionSelector = ({ title, options, name }) => (
   </>
 );
 
-const PriceAndAddToCart = ({price}:Partial<IProduct>) => (
-  <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
-    <div className="flex items-end">
-      <h1 className="text-3xl font-bold">${price}</h1>
-      {/* <span className="text-base">/month</span> */}
-    </div>
-    <Button
-      type="button"
-      className="bg-brandSecondary hover:text-brandPrimary hover:bg-highlight"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="shrink-0 mr-3 h-5 w-5"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth="2"
+const PriceAndAddToCart: FC<{ price: number; id: string }> = ({
+  price,
+  id,
+}) => {
+  const [addToCart, { data, isError, isLoading, isSuccess }] =
+    useAddToCartMutation();
+    if(isLoading) <Loader/>
+  const handleAddToCart = () => {
+    addToCart({ product: id, quantity: 1 });
+  };
+  return (
+    <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
+      <div className="flex items-end">
+        <h1 className="text-3xl font-bold">${price}</h1>
+        {/* <span className="text-base">/month</span> */}
+      </div>
+      <Button
+        type="button"
+        onClick={handleAddToCart}
+        className="bg-highlight text-primary hover:text-brandPrimary hover:bg-highlight/60"
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-        />
-      </svg>
-      Add to cart
-    </Button>
-  </div>
-);
+        <ShoppingBagPlusIcon />
+        Add to cart
+      </Button>
+    </div>
+  );
+};
 
 const ProductFeatures = () => (
   <ul className="mt-8 space-y-2">
@@ -132,6 +131,3 @@ const ProductFeatures = () => (
     ))}
   </ul>
 );
-
-
-

@@ -1,7 +1,7 @@
 import React from "react";
 import { IProduct } from "./types";
 import demoProduct from "/demoProduct.png";
-import { LoveIcon, ShopingCartIcon } from "../shared/Icons/Icons";
+import { LoveIcon, ShoppingBagIcon, } from "../shared/Icons/Icons";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
@@ -35,7 +35,7 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
             </del> */}
             <div className="ml-auto flex justify-between items-center gap-2">
               <LoveIcon />
-              <ShopingCartIcon />
+              <ShoppingBagIcon />
             </div>
           </div>
         </div>
