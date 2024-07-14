@@ -2,7 +2,7 @@ import { useAppSelector } from "@/redux/hooks";
 import ProductCard from "../components/products/ProductCard";
 import ProductHeader from "../components/productHeader/ProductHeader";
 import { IProduct } from "../components/products/types";
-import Container from "../components/shared/Conatainer";
+import Container from "../components/shared/Container";
 import { useGetAllProductsQuery } from "../redux/features/products/productsApi";
 import {
   selectCategory,
@@ -47,7 +47,7 @@ const Products: React.FC = () => {
   const minPrice = useAppSelector(selectMinPrice);
   const maxPrice = useAppSelector(selectMaxPrice);
   const clear = useAppSelector(selectClear);
-  
+
   // Construct the query object
   const query: Record<string, string> = {};
   if (category) {
@@ -68,7 +68,7 @@ const Products: React.FC = () => {
     delete query.minPrice;
     delete query.maxPrice;
   }
-  
+
   const { data } = useGetAllProductsQuery(query);
   console.log({ query });
   console.log({ data });

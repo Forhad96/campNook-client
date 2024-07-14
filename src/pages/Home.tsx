@@ -4,18 +4,18 @@ import Activity from "../test/Activity";
 import Benefit from "../test/Benefit";
 import Categories from "../test/Categories";
 import NewProducts from "../test/NewProducts";
-import NewProducts2 from "@/test/NewProducts2";
 import BestSelling from "@/components/bestSelling/BestSelling";
+import NewCollection from "@/components/newCollection/NewCollection";
 
 const Home = () => {
   return (
     <div className="">
       <Banner />
-      <NewProducts2 />
-      <BestSelling />
-      <Activity />
       <Benefit />
       <Categories />
+      <BestSelling />
+      <Activity />
+      <NewCollection/>
       <NewProducts />
     </div>
   );

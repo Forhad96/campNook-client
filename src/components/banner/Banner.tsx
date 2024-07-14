@@ -1,7 +1,7 @@
 import { useState } from "react";
 import banner1 from "/images/banner/banner1.png";
 import CommonSlider from "../shared/commonSlider/CommonSlider";
-import Container from "../shared/Conatainer";
+import Container from "../shared/Container";
 const Banner = () => {
   const [swiperState, setSwiperState] = useState({
     isBeginning: true,
@@ -36,7 +36,7 @@ const SlideItem = ({ items, index }) => {
       />
       <div className=" absolute inset-0 flex items-center flex-col justify-center">
         <h5 className="text-5xl text-white font-semibold mt-4">
-          Ultimate best tour for your life
+          Your Ultimate Camping Gear Destination
         </h5>
         <button className="bg-accent p-2 px-8 rounded-full bg-highlight mt-4 hover:bg-highlight/70 text-brandPrimary font-bold">
           Shop now

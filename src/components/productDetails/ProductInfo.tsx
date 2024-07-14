@@ -1,9 +1,10 @@
-import { FC } from "react";
+import { FC, useCallback, useEffect } from "react";
 import { IProduct } from "../products/types";
 import { ShoppingBagPlusIcon } from "../shared/Icons/Icons";
 import { Button } from "../ui/button";
 import { useAddToCartMutation } from "@/redux/features/cart/cartApi";
 import Loader from "../shared/Loader/Loader";
+import { toast } from "sonner";
 
 const ProductInfo = ({ name, category, price, _id }: IProduct) => (
   <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
@@ -74,10 +75,18 @@ const PriceAndAddToCart: FC<{ price: number; id: string }> = ({
 }) => {
   const [addToCart, { data, isError, isLoading, isSuccess }] =
     useAddToCartMutation();
-    if(isLoading) <Loader/>
-  const handleAddToCart = () => {
+
+  const handleAddToCart = useCallback(() => {
     addToCart({ product: id, quantity: 1 });
-  };
+  }, [addToCart, id]);
+
+  if (isSuccess) {
+    toast.success("1 new item(s) have been added to your cart");
+  }
+  if (isError) {
+    toast.error("Failed to add item to cart");
+  }
+
   return (
     <div className="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
       <div className="flex items-end">
@@ -88,9 +97,9 @@ const PriceAndAddToCart: FC<{ price: number; id: string }> = ({
         type="button"
         onClick={handleAddToCart}
         className="bg-highlight text-primary hover:text-brandPrimary hover:bg-highlight/60"
+        disabled={isLoading}
       >
-        <ShoppingBagPlusIcon />
-        Add to cart
+        <ShoppingBagPlusIcon /> Add to cart
       </Button>
     </div>
   );

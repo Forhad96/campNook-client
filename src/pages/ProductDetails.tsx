@@ -1,8 +1,7 @@
-import Breadcrumbs from "@/components/productDetails/Breadcrumbs";
 import ImageGallery from "@/components/productDetails/ImageGellery";
 import ProductInfo from "@/components/productDetails/ProductInfo";
 import ProductTabs from "@/components/productDetails/ProductTabs";
-import Container from "@/components/shared/Conatainer";
+import Container from "@/components/shared/Container";
 import Loader from "@/components/shared/Loader/Loader";
 import { useGetProductByIdQuery } from "@/redux/features/products/productsApi";
 import { useParams } from "react-router-dom";
@@ -18,13 +17,12 @@ const ProductDetails = () => {
   if (!id) {
     return <Loader />;
   }
-  console.log(data);
   return (
     <Container>
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
         {/* <Breadcrumbs /> */}
         <ImageGallery images={images} />
-        <ProductInfo {...data?.data}/>
+        <ProductInfo {...data?.data} />
         <ProductTabs {...data?.data} />
       </div>
     </Container>

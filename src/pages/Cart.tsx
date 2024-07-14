@@ -1,7 +1,7 @@
 import CartItem from "@/components/cart/CartItem";
 import Checkout from "@/components/cart/Checkout";
 import { ICartItem } from "@/components/cart/types";
-import Container from "@/components/shared/Conatainer";
+import Container from "@/components/shared/Container";
 import Loader from "@/components/shared/Loader/Loader";
 import { selectCurrentUser } from "@/redux/features/auth/authSlice";
 import { useGetUserAllCartsQuery } from "@/redux/features/cart/cartApi";
@@ -46,12 +46,12 @@ const Cart: FC = () => {
   const { data, isLoading } = useGetUserAllCartsQuery(undefined);
   const items = data?.data?.items as ICartItem[];
   if (isLoading) <Loader />;
-    const calculateTotal = () => {
-      return items?.reduce(
-        (total, item) => total + item?.product?.price * item?.quantity,
-        0
-      );
-    };
+  const calculateTotal = () => {
+    return items?.reduce(
+      (total, item) => total + item?.product?.price * item?.quantity,
+      0
+    );
+  };
   // console.log(items);
   return (
     <Container className=" items-center justify-center py-8">
