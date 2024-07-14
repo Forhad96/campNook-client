@@ -9,13 +9,11 @@ const cartApi = baseApi.injectEndpoints({
         body: payload,
       }),
     }),
-    getAllUserCarts: builder.query({
-      query: (query) => {
-        console.log(query);
+    getUserAllCarts: builder.query({
+      query: () => {
         return {
-          url: `/carts/${query.email}`,
+          url: `/carts/user-cart`,
           method: "GET",
-          params: query,
         };
       },
     }),
@@ -39,7 +37,7 @@ const cartApi = baseApi.injectEndpoints({
 });
 export const {
   useAddToCartMutation,
-  useGetAllUserCartsQuery,
+  useGetUserAllCartsQuery,
   useUpdateCartMutation,
   useDeleteCartMutation,
 } = cartApi;

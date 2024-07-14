@@ -1,13 +1,12 @@
 import CartItem from "@/components/cart/CartItem";
 import Checkout from "@/components/cart/Checkout";
 import { ICartItem } from "@/components/cart/types";
-import { IProduct } from "@/components/products/types";
 import Container from "@/components/shared/Conatainer";
 import Loader from "@/components/shared/Loader/Loader";
 import { selectCurrentUser } from "@/redux/features/auth/authSlice";
-import { useGetAllUserCartsQuery } from "@/redux/features/cart/cartApi";
+import { useGetUserAllCartsQuery } from "@/redux/features/cart/cartApi";
 import { useAppSelector } from "@/redux/hooks";
-import { FC, useState } from "react";
+import { FC } from "react";
 
 const cartItems = [
   {
@@ -42,14 +41,17 @@ const cartItems = [
   },
 ];
 
-
 const Cart: FC = () => {
-  const user = useAppSelector(selectCurrentUser)
-  const { data, isLoading } = useGetAllUserCartsQuery({
-    email: user?.email,
-  });
+  const user = useAppSelector(selectCurrentUser);
+  const { data, isLoading } = useGetUserAllCartsQuery(undefined);
   const items = data?.data?.items as ICartItem[];
   if (isLoading) <Loader />;
+    const calculateTotal = () => {
+      return items.reduce(
+        (total, item) => total + item.product.price * item.quantity,
+        0
+      );
+    };
   // console.log(items);
   return (
     <Container className=" items-center justify-center py-8">
@@ -82,14 +84,13 @@ const Cart: FC = () => {
             Products
           </p>
 
-          {items?.map(
-            (item, index) => 
-              // console.log(item.product)
-            <CartItem key={index} {...item} email ={user?.email} />
-          )}
+          {items?.map((item, index) => (
+            // console.log(item.product)
+            <CartItem key={index} {...item} email={user?.email} />
+          ))}
         </div>
 
-        <Checkout />
+        <Checkout total={calculateTotal()} />
       </div>
     </Container>
   );

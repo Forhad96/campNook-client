@@ -1,4 +1,4 @@
-import  { FC, memo, useState, useCallback, useEffect } from "react";
+import  { FC, memo, useState, useCallback } from "react";
 import { DecrementIcon, IncrementIcon } from "../shared/Icons/Icons";
 import { useUpdateCartMutation } from "@/redux/features/cart/cartApi";
 

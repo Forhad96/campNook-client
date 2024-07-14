@@ -1,6 +1,8 @@
-import CartItem from "./CartItem";
-
-const Checkout = () => {
+import { FC } from "react";
+type TCheckoutProps ={
+  total:number
+}
+const Checkout:FC<TCheckoutProps> = ({total}) => {
 
 
   return (
@@ -15,7 +17,7 @@ const Checkout = () => {
               Subtotal
             </p>
             <p className="text-base leading-none text-gray-800 dark:text-white">
-              $3,000
+              ${total}
             </p>
           </div>
           <div className="flex items-center justify-between pt-5">
