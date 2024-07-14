@@ -20,11 +20,14 @@ const cartApi = baseApi.injectEndpoints({
       },
     }),
     updateCart: builder.mutation({
-      query: ({ id, ...updatedProduct }) => ({
-        url: `/carts/${id}`,
-        method: "PUT",
-        body: updatedProduct,
-      }),
+      query: ( updatedProduct ) => {
+        console.log(updatedProduct);
+        return {
+          url: `/carts`,
+          method: "PATCH",
+          body: updatedProduct,
+        };
+      },
     }),
     deleteCart: builder.mutation({
       query: (id: string) => ({
@@ -35,8 +38,8 @@ const cartApi = baseApi.injectEndpoints({
   }),
 });
 export const {
-useAddToCartMutation,
-useGetAllUserCartsQuery,
-useUpdateCartMutation,
-useDeleteCartMutation
+  useAddToCartMutation,
+  useGetAllUserCartsQuery,
+  useUpdateCartMutation,
+  useDeleteCartMutation,
 } = cartApi;

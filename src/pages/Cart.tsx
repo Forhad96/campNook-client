@@ -1,43 +1,56 @@
-
 import CartItem from "@/components/cart/CartItem";
 import Checkout from "@/components/cart/Checkout";
+import { ICartItem } from "@/components/cart/types";
+import { IProduct } from "@/components/products/types";
 import Container from "@/components/shared/Conatainer";
-import  { FC, useState } from "react";
+import Loader from "@/components/shared/Loader/Loader";
+import { selectCurrentUser } from "@/redux/features/auth/authSlice";
+import { useGetAllUserCartsQuery } from "@/redux/features/cart/cartApi";
+import { useAppSelector } from "@/redux/hooks";
+import { FC, useState } from "react";
 
-  const cartItems = [
-    {
-      imgSrc: "https://i.ibb.co/SX762kX/Rectangle-36-1.png",
-      imgAlt: "Black Leather Bag",
-      code: "RF293",
-      name: "North wolf bag",
-      height: "10 inches",
-      color: "Black",
-      composition: "100% calf leather",
-      price: "$1,000",
-    },
-    {
-      imgSrc: "https://i.ibb.co/c6KyDXN/Rectangle-5-1.png",
-      imgAlt: "Gray Sneakers",
-      code: "RF293",
-      name: "LW sneakers",
-      height: "10 inches",
-      color: "Black",
-      composition: "100% calf leather",
-      price: "$1,000",
-    },
-    {
-      imgSrc: "https://i.ibb.co/6gzWwSq/Rectangle-20-1.png",
-      imgAlt: "Black Leather Purse",
-      code: "RF293",
-      name: "Luxe card holder",
-      height: "10 inches",
-      color: "Black",
-      composition: "100% calf leather",
-      price: "$1,000",
-    },
-  ];
+const cartItems = [
+  {
+    imgSrc: "https://i.ibb.co/SX762kX/Rectangle-36-1.png",
+    imgAlt: "Black Leather Bag",
+    code: "RF293",
+    name: "North wolf bag",
+    height: "10 inches",
+    color: "Black",
+    composition: "100% calf leather",
+    price: "$1,000",
+  },
+  {
+    imgSrc: "https://i.ibb.co/c6KyDXN/Rectangle-5-1.png",
+    imgAlt: "Gray Sneakers",
+    code: "RF293",
+    name: "LW sneakers",
+    height: "10 inches",
+    color: "Black",
+    composition: "100% calf leather",
+    price: "$1,000",
+  },
+  {
+    imgSrc: "https://i.ibb.co/6gzWwSq/Rectangle-20-1.png",
+    imgAlt: "Black Leather Purse",
+    code: "RF293",
+    name: "Luxe card holder",
+    height: "10 inches",
+    color: "Black",
+    composition: "100% calf leather",
+    price: "$1,000",
+  },
+];
 
-const Cart:FC = () => {
+
+const Cart: FC = () => {
+  const user = useAppSelector(selectCurrentUser)
+  const { data, isLoading } = useGetAllUserCartsQuery({
+    email: user?.email,
+  });
+  const items = data?.data?.items as ICartItem[];
+  if (isLoading) <Loader />;
+  // console.log(items);
   return (
     <Container className=" items-center justify-center py-8">
       <div className="flex items-end lg:flex-row flex-col justify-end">
@@ -68,13 +81,15 @@ const Cart:FC = () => {
           <p className="lg:text-4xl text-3xl font-black leading-10 text-brandPrimary dark:text-white pt-3">
             Products
           </p>
-          
-          {cartItems.map((item, index) => (
-            <CartItem key={index} {...item} />
-          ))}
+
+          {items?.map(
+            (item, index) => 
+              // console.log(item.product)
+            <CartItem key={index} {...item} email ={user?.email} />
+          )}
         </div>
 
-      <Checkout />
+        <Checkout />
       </div>
     </Container>
   );

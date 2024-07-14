@@ -4,6 +4,7 @@ import Cart from "../pages/Cart";
 import Faq from "../components/faq/Faq";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
+import ProtectedRoute from "@/components/layout/ProtectedRoute";
 
 export const homePaths = [
   {
@@ -27,7 +28,11 @@ export const homePaths = [
   {
     name: "Cart",
     path: "cart",
-    element: <Cart />,
+    element: (
+      <ProtectedRoute>
+        <Cart />
+      </ProtectedRoute>
+    ),
   },
   {
     name: "FAQ",
