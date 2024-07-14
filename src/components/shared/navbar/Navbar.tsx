@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavLogo from "./NavLogo";
 import NavItems from "./NavItems";
 import { Link } from "react-router-dom";
+import NavProfile from "./NavProfile";
 
 export default function Navbar() {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
@@ -151,7 +152,8 @@ const Topbar = () => {
 const Actions = () => {
   return (
     <div className="ml-auto flex items-center justify-end px-6 lg:ml-0 lg:flex-1 lg:p-0">
-      <Link 
+      <NavProfile />
+      <Link
         to="/cart"
         className="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-lg text-emerald-500"
       >

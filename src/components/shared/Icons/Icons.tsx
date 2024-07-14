@@ -175,7 +175,7 @@ const LoveIcon = () => {
   );
 };
 
-const ShopingCartIcon = () =>{
+const ShopingCartIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -192,8 +192,8 @@ const ShopingCartIcon = () =>{
       <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
     </svg>
   );
-}
-const IncrementIcon = () =>{
+};
+const IncrementIcon = () => {
   return (
     <svg
       className="h-2.5 w-2.5 text-gray-900 dark:text-white"
@@ -211,8 +211,8 @@ const IncrementIcon = () =>{
       />
     </svg>
   );
-}
-const DecrementIcon = () =>{
+};
+const DecrementIcon = () => {
   return (
     <svg
       className="h-2.5 w-2.5 text-gray-900 dark:text-white"
@@ -230,8 +230,31 @@ const DecrementIcon = () =>{
       />
     </svg>
   );
-}
-
+};
+const UserIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      aria-labelledby="title description"
+      role="graphics-symbol"
+    >
+      <title id="title">User Icon</title>
+      <desc id="description">
+        User icon associated with a particular user account
+      </desc>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+      />
+    </svg>
+  );
+};
 export {
   ArrowIconRight,
   ArrowIconLeft,
@@ -243,5 +266,6 @@ export {
   LoveIcon,
   ShopingCartIcon,
   IncrementIcon,
-  DecrementIcon
+  DecrementIcon,
+  UserIcon,
 };

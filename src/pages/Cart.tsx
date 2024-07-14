@@ -47,8 +47,8 @@ const Cart: FC = () => {
   const items = data?.data?.items as ICartItem[];
   if (isLoading) <Loader />;
     const calculateTotal = () => {
-      return items.reduce(
-        (total, item) => total + item.product.price * item.quantity,
+      return items?.reduce(
+        (total, item) => total + item?.product?.price * item?.quantity,
         0
       );
     };

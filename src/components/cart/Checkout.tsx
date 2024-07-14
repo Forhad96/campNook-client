@@ -43,7 +43,7 @@ const Checkout:FC<TCheckoutProps> = ({total}) => {
               Total
             </p>
             <p className="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">
-              $3,240
+              ${total}
             </p>
           </div>
           <button className="text-base leading-none w-full py-5 bg-brandSecondary border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700">
