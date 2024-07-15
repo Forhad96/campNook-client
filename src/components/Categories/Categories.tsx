@@ -28,21 +28,14 @@ export default function Categories() {
           dic="Find all the essentials for your camping adventure."
         />
       </header>
-      <div className=" grid grid-cols-4 gap-2 ">
+      <div className=" grid grid-cols-1 md:grid-cols-4 gap-2 ">
         {products?.slice(0, 4).map((card, index) => (
-          <div
-            key={card._id}
-            className={`w-full flex justify-center items-center  mx-auto transform transition-transform duration-300 ${
-              index === currentIndex
-                ? "scale-100"
-                : "scale-100  hidden lg:block xl:block"
-            }`}
-          >
-            <div className="relative group rounded-lg overflow-hidden w-full hover:bg-campfire-gradient flex flex-col justify-center items-center bg-brandSecondary/15 shadow-md">
+
+            <div key={index} className="relative group rounded-lg overflow-hidden w-full hover:bg-campfire-gradient flex flex-col justify-center items-center bg-brandSecondary/15 shadow-md">
               <img
                 src={card.images.length === 0 ? notFoundImg : card.images[0]}
                 alt={card.name || "Product Image"}
-                className="object-cover h-72 w-full"
+                className="object-cover h-full max-h-96 w-full"
               />
               {card.name && (
                 <div className="p-4  absolute bottom-0 bg-brandSecondary/70 hover:bg-campfire-gradient w-full text-center">
@@ -52,7 +45,7 @@ export default function Categories() {
                 </div>
               )}
             </div>
-          </div>
+
           // <img src={item} key={i} alt="" />
         ))}
       </div>
