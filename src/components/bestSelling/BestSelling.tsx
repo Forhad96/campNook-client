@@ -4,6 +4,7 @@ import { IProduct } from "../products/types";
 import Loader from "../shared/Loader/Loader";
 import notFoundImg from "/not-found.jpg";
 import ComHeader from "../shared/ComHeader";
+import { Button } from "../ui/button";
 
 const BestSelling = () => {
   const { data, isLoading, isFetching } = useGetAllProductsQuery(undefined);
@@ -25,7 +26,10 @@ const BestSelling = () => {
   return (
     <div className="container mx-auto py-8 px-10 my-10">
       <header>
-        <ComHeader head="Best Selling Products" dic="Gear up for great outdoor"/>
+        <ComHeader
+          head="Best Selling Products"
+          dic="Gear up for great outdoor"
+        />
       </header>
       <div className="relative px-5">
         <div className="absolute inset-y-0 -left-5 flex items-center">
@@ -73,6 +77,12 @@ const BestSelling = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="mt-8 text-center">
+        <Button  className="inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white transition duration-500 hover:bg-gray-800">
+          See More
+        </Button>
       </div>
     </div>
   );
