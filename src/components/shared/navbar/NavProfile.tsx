@@ -1,5 +1,4 @@
 
-import { UserIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,8 +13,8 @@ export default function NavProfile() {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger>
-          <a className="relative inline-flex size-7 items-center justify-center rounded-full bg-emerald-500 text-white">
-            <UserIcon />
+          <a className="relative inline-flex size-7 items-center justify-center rounded-full border-2 border-highlight text-white">
+            <UserIcon/>
           </a>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
@@ -33,6 +32,7 @@ export default function NavProfile() {
 
 
 import React from "react";
+import { UserIcon } from "../Icons/Icons";
 
 export  function AvatarRoundedFullSmBadgeBottomIcon() {
   return (

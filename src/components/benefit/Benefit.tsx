@@ -3,6 +3,7 @@ import image2 from "/images/benifit/w.png";
 import image3 from "/images/benifit/Headset.png";
 import image4 from "/images/benifit/truck.png";
 import ComHeader from "../shared/ComHeader";
+import Container from "../shared/Container";
 
 export default function Benefit() {
   const data = [
@@ -25,7 +26,7 @@ export default function Benefit() {
   ];
 
   return (
-    <div className="container mt-32 mx-auto lg:px-20">
+    <Container py="py-10">
       <ComHeader
         head={"Why Shop with CampNook?"}
         dic="Experience the best in camping gear with high quality, warranty, free shipping, and 24/7 support."
@@ -43,7 +44,7 @@ export default function Benefit() {
           </div>
         ))}
       </div>
-    </div>
+    </Container>
   );
 }
 

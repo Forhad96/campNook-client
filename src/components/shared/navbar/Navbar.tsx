@@ -1,42 +1,58 @@
-import React, { useState } from "react";
 import NavLogo from "./NavLogo";
 import NavItems from "./NavItems";
-import { Link } from "react-router-dom";
-import NavProfile from "./NavProfile";
+import Container from "../Container";
+import NavAction from "./NavAction";
 
-export default function Navbar() {
-  const [isToggleOpen, setIsToggleOpen] = useState(false);
+import { useState } from "react";
+
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <>
-      {/*<!-- Component: Navbar with Topbar --> */}
-      {/*<!-- Top bar --> */}
-      <Topbar />
-      {/*<!-- Header --> */}
-      <header className="border-b-1 relative z-20 w-full border-b border-slate-200 bg shadow-lg shadow-slate-700/5 after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden">
-        <div className="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
-          <nav
-            aria-label="main navigation"
-            className="flex h-[5.5rem] items-stretch justify-between font-medium text-slate-700"
-            role="navigation"
-          >
-            {/*      <!-- Brand logo --> */}
-            <NavLogo />
-            {/*      <!-- Mobile trigger --> */}
-            <MobileTrigger
-              isToggleOpen={isToggleOpen}
-              setIsToggleOpen={setIsToggleOpen}
-            />
-            {/*      <!-- Navigation links --> */}
-            <NavItems isToggleOpen={isToggleOpen} />
-            {/*      <!-- Actions --> */}
-            <Actions />
-          </nav>
+    <nav className="bg-brandPrimary dark:bg-gray-900 sticky w-full z-20 top-0 left-0  shadow-md">
+      <Container>
+        <div className="flex flex-wrap items-center justify-between mx-auto p-4">
+          <NavLogo />
+          <div className="flex md:order-2">
+            <NavAction />
+            <button
+              id="navbar-toggle"
+              type="button"
+              className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              aria-controls="navbar-sticky"
+              aria-expanded={isMenuOpen}
+              onClick={handleToggle}
+            >
+              <span className="sr-only">Open main menu</span>
+              <svg
+                className="w-5 h-5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 17 14"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M1 1h15M1 7h15M1 13h15"
+                />
+              </svg>
+            </button>
+          </div>
+          <NavItems isToggleOpen={isMenuOpen} />
         </div>
-      </header>
-      {/*<!-- End Navbar with Topbar--> */}
-    </>
+      </Container>
+    </nav>
   );
-}
+};
+
+export default Navbar;
 
 const Topbar = () => {
   return (
@@ -149,74 +165,4 @@ const Topbar = () => {
     </div>
   );
 };
-const Actions = () => {
-  return (
-    <div className="ml-auto flex items-center justify-end px-6 lg:ml-0 lg:flex-1 lg:p-0">
-      <NavProfile />
-      <Link
-        to="/cart"
-        className="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-lg text-emerald-500"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          aria-labelledby="title description"
-          role="graphics-symbol"
-        >
-          <title id="title">Cart Icon</title>
-          <desc id="description">Cart icon with items</desc>
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-          />
-        </svg>
-        <span className="absolute -right-1.5 -top-1.5 inline-flex items-center justify-center gap-1 rounded-full border-2 border-white bg-pink-500 px-1.5 text-sm text-white">
-          2<span className="sr-only"> new emails </span>
-        </span>
-      </Link>
-    </div>
-  );
-};
 
-const MobileTrigger = ({
-  isToggleOpen,
-  setIsToggleOpen,
-}: {
-  isToggleOpen: boolean;
-  setIsToggleOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
-  return (
-    <button
-      className={`relative order-10 block h-10 w-10 self-center lg:hidden
-                ${
-                  isToggleOpen
-                    ? "visible opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(2)]:-rotate-45 [&_span:nth-child(3)]:w-0 "
-                    : ""
-                }
-              `}
-      onClick={() => setIsToggleOpen(!isToggleOpen)}
-      aria-expanded={isToggleOpen ? "true" : "false"}
-      aria-label="Toggle navigation"
-    >
-      <div className="absolute left-1/2 top-1/2 w-6 -translate-x-1/2 -translate-y-1/2 transform">
-        <span
-          aria-hidden="true"
-          className="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
-        ></span>
-        <span
-          aria-hidden="true"
-          className="absolute block h-0.5 w-6 transform rounded-full bg-slate-900 transition duration-300"
-        ></span>
-        <span
-          aria-hidden="true"
-          className="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
-        ></span>
-      </div>
-    </button>
-  );
-};

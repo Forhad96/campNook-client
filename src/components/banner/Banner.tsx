@@ -8,20 +8,22 @@ const Banner = () => {
     isEnd: false,
   });
   return (
-    <CommonSlider
-      slidesPerView={1}
-      spaceBetween={10}
-      //   slidesPerGroup={Math.ceil(products.length / 4)}
-      sliderId="HeroSlider"
-      className="HeroSlider"
-      freeMode={true}
-      grabCursor={true}
-      setSwiperState={setSwiperState}
-    >
-      {[1, 2, 3].map((product, index) => (
-        <SlideItem key={index} items={product} index={index} />
-      ))}
-    </CommonSlider>
+    <div className="">
+      <CommonSlider
+        slidesPerView={1}
+        spaceBetween={10}
+        //   slidesPerGroup={Math.ceil(products.length / 4)}
+        sliderId="HeroSlider"
+        className="HeroSlider"
+        freeMode={true}
+        grabCursor={true}
+        setSwiperState={setSwiperState}
+      >
+        {[1, 2, 3].map((product, index) => (
+          <SlideItem key={index} items={product} index={index} />
+        ))}
+      </CommonSlider>
+    </div>
   );
 };
 export default Banner;

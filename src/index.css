@@ -70,6 +70,6 @@
 
   @layer components {
   .benefitCard {
-    @apply bg-brandSecondary/15 hover:bg-highlight transition-all duration-500 flex items-center justify-center flex-col  font-bold text-[18px] md:text-[22px] space-y-10 text-opacity-70 lg:text-[32px];
+    @apply bg-brandSecondary/15 hover:bg-campfire-gradient transition-all duration-500 flex items-center justify-center flex-col  font-bold text-[18px] md:text-[22px] space-y-10 text-opacity-70 lg:text-[32px];
   }
 }

@@ -5,7 +5,8 @@ import Categories from "../components/Categories/Categories";
 import BestSelling from "@/components/bestSelling/BestSelling";
 const Home = () => {
   return (
-    <div className="">
+    <div className="relative">
+
       <Banner />
       <Activity />
       <BestSelling />

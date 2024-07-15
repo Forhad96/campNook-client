@@ -257,7 +257,7 @@ const UserIcon = () => {
       className="h-5 w-5"
       fill="none"
       viewBox="0 0 24 24"
-      stroke="currentColor"
+      stroke="#FFDA16"
       strokeWidth="1.5"
       aria-labelledby="title description"
       role="graphics-symbol"

@@ -38,14 +38,14 @@ export default function Categories() {
                 : "scale-100  hidden lg:block xl:block"
             }`}
           >
-            <div className="relative group rounded-lg overflow-hidden w-full hover:bg-highlight flex flex-col justify-center items-center bg-brandSecondary/15 shadow-md">
+            <div className="relative group rounded-lg overflow-hidden w-full hover:bg-campfire-gradient flex flex-col justify-center items-center bg-brandSecondary/15 shadow-md">
               <img
                 src={card.images.length === 0 ? notFoundImg : card.images[0]}
                 alt={card.name || "Product Image"}
                 className="object-cover h-72 w-full"
               />
               {card.name && (
-                <div className="p-4  absolute bottom-0 bg-brandSecondary/70 hover:bg-highlight w-full text-center">
+                <div className="p-4  absolute bottom-0 bg-brandSecondary/70 hover:bg-campfire-gradient w-full text-center">
                   <h3 className="text-white text-lg font-semibold mb-2">
                     {card.category}
                   </h3>
