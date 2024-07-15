@@ -26,7 +26,7 @@ const BestSelling = () => {
   return (
     <div className="container mx-auto py-8 px-10 my-10">
       <header>
-        <ComHeader head="Best Selling Products" dic="Gear up for greet outdoor"/>
+        <ComHeader head="Best Selling Products" dic="Gear up for great outdoor"/>
       </header>
       <div className="relative px-5">
         <div className="absolute inset-y-0 -left-5 flex items-center">

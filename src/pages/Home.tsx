@@ -1,7 +1,6 @@
-
 import Banner from "@/components/banner/Banner";
 import Activity from "../test/Activity";
-import Benefit from "../test/Benefit";
+import Benefit from "../components/benefit/Benefit";
 import Categories from "../test/Categories";
 import NewProducts from "../test/NewProducts";
 import BestSelling from "@/components/bestSelling/BestSelling";
@@ -12,11 +11,11 @@ const Home = () => {
     <div className="">
       <Banner />
       <BestSelling />
-      
+
       <Benefit />
       <Categories />
       <Activity />
-      <NewCollection/>
+      <NewCollection />
       <NewProducts />
     </div>
   );
