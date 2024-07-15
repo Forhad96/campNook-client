@@ -2,6 +2,7 @@ import { useState } from "react";
 import banner1 from "/images/banner/banner1.png";
 import CommonSlider from "../shared/commonSlider/CommonSlider";
 import Container from "../shared/Container";
+import ComButton from "../shared/ComButton";
 const Banner = () => {
   const [swiperState, setSwiperState] = useState({
     isBeginning: true,
@@ -40,9 +41,9 @@ const SlideItem = ({ items, index }) => {
         <h5 className="text-5xl text-white font-semibold mt-4">
           Your Ultimate Camping Gear Destination
         </h5>
-        <button className="bg-accent p-2 px-8 rounded-full bg-highlight mt-4 hover:bg-highlight/70 text-brandPrimary font-bold">
-          Shop now
-        </button>
+       <ComButton className="mt-5">
+        Shop Now
+       </ComButton>
       </div>
     </div>
   );
