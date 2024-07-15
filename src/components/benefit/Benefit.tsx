@@ -26,7 +26,10 @@ export default function Benefit() {
 
   return (
     <div className="container mt-32 mx-auto lg:px-20">
-      <ComHeader head={"Benefit CampNook For You"} />
+      <ComHeader
+        head={"Why Shop with CampNook?"}
+        dic="Experience the best in camping gear with high quality, warranty, free shipping, and 24/7 support."
+      />
       <div className=" grid lg:grid-cols-4 grid-cols-2 lg:gap-10 gap-5 mt-10">
         {data.map((item, index) => (
           <div

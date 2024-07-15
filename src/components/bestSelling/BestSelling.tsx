@@ -2,7 +2,6 @@ import { useGetAllProductsQuery } from "@/redux/features/products/productsApi";
 import { useState } from "react";
 import { IProduct } from "../products/types";
 import Loader from "../shared/Loader/Loader";
-import { Images } from "../shared/Images";
 import notFoundImg from "/not-found.jpg";
 import ComHeader from "../shared/ComHeader";
 
