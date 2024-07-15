@@ -101,16 +101,11 @@ const Activity = () => {
             head="ACTIVITY"
             dic=" Camp Will Be For You What You Want It To Be."
           />
-      <div className=" mt-20 flex justify-between items-center gap-20">
-        <div className="w-1/2 ">
-          {/* <p className="text-4xl text-brandPrimary font-bold">ACTIVITY</p>
-          <h1 className="mb-14 text-xl  text-brandPrimary">
-            Camp Will Be For You <br /> What You Want It To Be.
-          </h1> */}
+      <div className=" mt-20 flex justify-between items-center flex-wrap md:flex-nowrap md:gap-20">
           <img src={activitybg} alt="" />
-        </div>
+     
 
-        <div className="w-1/2  grid grid-cols-2 gap-10">
+        <div className="grid grid-cols-2 gap-10">
           {activities.map((item) => (
             <div key={item.name} className="space-y-3">
               {/* <img src={item.image} alt="" /> */}

@@ -13,7 +13,7 @@ const Container: FC<ContainerProps> = ({
   children,
   className = "",
   py = "",
-  px = "",
+  px = "px-6",
 }): JSX.Element => {
 
   return <div className={`${className} ${py} ${px} max-w-[1200px] w-full mx-auto`}>{children}</div>;
