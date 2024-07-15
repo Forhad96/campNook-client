@@ -1,85 +1,81 @@
-import React from "react";
+import { useGetAllProductsQuery } from "@/redux/features/products/productsApi";
+import { useState } from "react";
+import { IProduct } from "../products/types";
+import Loader from "../shared/Loader/Loader";
+import { Images } from "../shared/Images";
+import notFoundImg from "/not-found.jpg";
+import ComHeader from "../shared/ComHeader";
 
-const BestSelling: React.FC = () => {
-  
+const BestSelling = () => {
+  const { data, isLoading, isFetching } = useGetAllProductsQuery(undefined);
+  const products = data?.data as IProduct[];
+  if (isLoading || isFetching) <Loader />;
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    const newIndex = currentIndex + 1 >= products.length ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const prevSlide = () => {
+    const newIndex = currentIndex - 1 < 0 ? products.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+  };
+
   return (
-    <section>
-      <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-        <header className="text-center">
-          <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
-            New Collection
-          </h2>
-
-          <p className="mx-auto mt-4 max-w-md text-gray-500">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
-            praesentium cumque iure dicta incidunt est ipsam, officia dolor
-            fugit natus?
-          </p>
-        </header>
-
-        <ul className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
-          <li>
-            <a href="#" className="group relative block">
-              <img
-                src="https://images.unsplash.com/photo-1618898909019-010e4e234c55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                alt=""
-                className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
-              />
-
-              <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
-                <h3 className="text-xl font-medium text-white">
-                  Casual Trainers
-                </h3>
-
-                <span className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
-                  Shop Now
-                </span>
+    <div className="container mx-auto py-8 px-10 my-10">
+      <header>
+        <ComHeader head="Best Selling Products" dic="Gear up for greet outdoor"/>
+      </header>
+      <div className="relative px-5">
+        <div className="absolute inset-y-0 -left-5 flex items-center">
+          <button
+            onClick={prevSlide}
+            className="text-3xl"
+            aria-label="Previous Slide"
+          >
+            &#10094;
+          </button>
+        </div>
+        <div className="absolute inset-y-0 -right-5 flex items-center">
+          <button
+            onClick={nextSlide}
+            className="text-3xl"
+            aria-label="Next Slide"
+          >
+            &#10095;
+          </button>
+        </div>
+        <div className="flex overflow-hidden w-full px-5">
+          {products?.map((card, index) => (
+            <div
+              key={card._id}
+              className={`w-full flex justify-center items-center  mx-auto transform transition-transform duration-300 ${
+                index === currentIndex
+                  ? "scale-100"
+                  : "scale-75  hidden lg:block xl:block"
+              }`}
+            >
+              <div className="rounded-lg overflow-hidden w-full hover:bg-highlight flex flex-col justify-center items-center bg-brandSecondary/15 shadow-md">
+                <img
+                  src={card.images.length === 0 ? notFoundImg : card.images[0]}
+                  alt={card.name || "Product Image"}
+                  className="object-cover h-72 w-full"
+                />
+                {card.name && (
+                  <div className="p-4">
+                    <h3 className="text-brandPrimary text-lg font-semibold mb-2">
+                      {card.name}
+                    </h3>
+                  </div>
+                )}
               </div>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" className="group relative block">
-              <img
-                src="https://images.unsplash.com/photo-1624623278313-a930126a11c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                alt=""
-                className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
-              />
-
-              <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
-                <h3 className="text-xl font-medium text-white">
-                  Winter Jumpers
-                </h3>
-
-                <span className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
-                  Shop Now
-                </span>
-              </div>
-            </a>
-          </li>
-
-          <li className="lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-1">
-            <a href="#" className="group relative block">
-              <img
-                src="https://images.unsplash.com/photo-1593795899768-947c4929449d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80"
-                alt=""
-                className="aspect-square w-full object-cover transition duration-500 group-hover:opacity-90"
-              />
-
-              <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
-                <h3 className="text-xl font-medium text-white">
-                  Skinny Jeans Blue
-                </h3>
-
-                <span className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
-                  Shop Now
-                </span>
-              </div>
-            </a>
-          </li>
-        </ul>
+            </div>
+          ))}
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 

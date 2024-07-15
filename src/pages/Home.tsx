@@ -11,9 +11,10 @@ const Home = () => {
   return (
     <div className="">
       <Banner />
+      <BestSelling />
+      
       <Benefit />
       <Categories />
-      <BestSelling />
       <Activity />
       <NewCollection/>
       <NewProducts />

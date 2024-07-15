@@ -29,7 +29,7 @@ const NavLogo = () => {
               fill="rgba(255,255,255,.2)"
             />
           </svg>
-          Brand
+          CampNook
         </a>
     );
 };
