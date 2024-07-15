@@ -5,6 +5,7 @@ import Loader from "../shared/Loader/Loader";
 import notFoundImg from "/not-found.jpg";
 import ComHeader from "../shared/ComHeader";
 import { Button } from "../ui/button";
+import ComButton from "../shared/ComButton";
 
 const BestSelling = () => {
   const { data, isLoading, isFetching } = useGetAllProductsQuery(undefined);
@@ -56,11 +57,11 @@ const BestSelling = () => {
               key={card._id}
               className={`w-full flex justify-center items-center  mx-auto transform transition-transform duration-300 ${
                 index === currentIndex
-                  ? "scale-100"
+                  ? "scale-100 bg-campfire-gradient"
                   : "scale-75  hidden lg:block xl:block"
               }`}
             >
-              <div className="rounded-lg overflow-hidden w-full hover:bg-highlight flex flex-col justify-center items-center bg-brandSecondary/15 shadow-md">
+              <div className="rounded-lg overflow-hidden w-full hover:bg-campfire-gradient flex flex-col justify-center items-center bg-brandSecondary/15 shadow-md">
                 <img
                   src={card.images.length === 0 ? notFoundImg : card.images[0]}
                   alt={card.name || "Product Image"}
@@ -78,11 +79,10 @@ const BestSelling = () => {
           ))}
         </div>
       </div>
-
       <div className="mt-8 text-center">
-        <Button  className="inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white transition duration-500 hover:bg-gray-800">
-          See More
-        </Button>
+<ComButton className="border-2 border-brandPrimary">
+  See More
+</ComButton>
       </div>
     </div>
   );
