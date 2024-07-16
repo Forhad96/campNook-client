@@ -34,7 +34,7 @@ export default function Benefit() {
       <div className=" grid lg:grid-cols-4 grid-cols-2 lg:gap-10 gap-5 mt-10">
         {data.map((item, index) => (
           <div
-            className=" rounded-2xl px-5 lg:py-10 py-5 benefitCard"
+            className=" rounded-2xl px-5 lg:py-10 py-5 bg-brandSecondary/15 hover:bg-campfire-gradient transition-all duration-500 flex items-center justify-center flex-col  font-bold text-[18px] md:text-[22px] space-y-10 text-opacity-70 lg:text-[32px] cursor-pointer hover:scale-105"
             key={index}
           >
             <div className=" bg-brandSecondary lg:p-4 p-2 rounded-full ">

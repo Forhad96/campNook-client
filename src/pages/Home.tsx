@@ -3,6 +3,7 @@ import Activity from "../components/Activity/Activity";
 import Benefit from "../components/benefit/Benefit";
 import Categories from "../components/Categories/Categories";
 import BestSelling from "@/components/bestSelling/BestSelling";
+import Testimonials from "@/components/testimonials/Testimonials";
 const Home = () => {
   return (
     <div className="relative">
@@ -12,6 +13,7 @@ const Home = () => {
       <BestSelling />
       <Categories />
       <Benefit />
+      <Testimonials/>
     </div>
   );
 };

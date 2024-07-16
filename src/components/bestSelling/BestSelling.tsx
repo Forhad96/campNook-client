@@ -20,7 +20,8 @@ const BestSelling = () => {
   };
 
   const prevSlide = () => {
-    const newIndex = currentIndex - 1 < 0 ? products.length - 1 : currentIndex - 1;
+    const newIndex =
+      currentIndex - 1 < 0 ? products.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
 
@@ -57,7 +58,7 @@ const BestSelling = () => {
               key={card._id}
               className={`w-full flex justify-center items-center  mx-auto transform transition-transform duration-300 ${
                 index === currentIndex
-                  ? "scale-100 bg-campfire-gradient"
+                  ? "scale-100 bg-brandSecondary/10"
                   : "scale-75  hidden lg:block xl:block"
               }`}
             >
@@ -80,9 +81,7 @@ const BestSelling = () => {
         </div>
       </div>
       <div className="mt-8 text-center">
-<ComButton className="border-2 border-brandPrimary">
-  See More
-</ComButton>
+        <ComButton className="border-2 border-brandPrimary">See More</ComButton>
       </div>
     </div>
   );
