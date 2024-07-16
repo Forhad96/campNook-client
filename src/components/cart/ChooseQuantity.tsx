@@ -10,8 +10,7 @@ const ChooseQuantity: FC<{
   const [updateQuantity, setUpdateQuantity] = useState(quantity);
   const [updateItemQuantity, { data, isSuccess, isError, isLoading }] =
     useUpdateCartMutation();
-
-  console.log(productId,data);
+  // console.log(productId,data);
 
   const handleIncrement = useCallback(() => {
     if (updateQuantity < stock) {

@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { logout } from "../../../redux/features/auth/authSlice";
+import DashboardSidebar from "./DashboardSidebar";
 const { Header, Content } = Layout;
 
 const DashboardLayout = () => {
@@ -15,7 +16,7 @@ const DashboardLayout = () => {
   };
   return (
     <Layout style={{ height: "100vh" }}>
-      <DashboardLayout />
+      <DashboardSidebar />
       <Layout>
         <Header style={{ padding: 0 }}>
           <Button onClick={handleLogout}>Logout</Button>

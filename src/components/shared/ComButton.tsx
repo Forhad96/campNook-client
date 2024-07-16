@@ -13,7 +13,7 @@ const ComButton: React.FC<IButtonProps> = ({ onClick, children, className }) => 
     <Button
       type="button"
       onClick={onClick}
-      className={`text-brandPrimary bg-campfire-gradient hover:bg-highlight focus:ring-2 focus:outline-none focus:ring-brandSecondary font-medium rounded-sm text-sm px-4 py-2 text-center ${className}`}
+      className={`text-brandPrimary hover:scale-105 transition duration-500 bg-campfire-gradient hover:bg-highlight focus:ring-2 focus:outline-none focus:ring-brandSecondary font-medium rounded-sm text-sm px-4 py-2 text-center ${className}`}
     >
       {children}
     </Button>

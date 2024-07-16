@@ -16,13 +16,14 @@ import { useAppDispatch } from "@/redux/hooks";
 import { useEffect, useState } from "react";
 
 const CategoryFilterDropdown = (): JSX.Element => {
-  const { data } = useGetAllProductsQuery({ fields: "category" });
-  console.log(data);
   const dispatch = useAppDispatch();
+  const { data } = useGetAllProductsQuery({ fields: "category" });
   const [selectedCategory, handleCategoryChange] = useState("");
-// Extract unique categories
-  const uniqueCategories = Array.from(new Set(data?.data.map(product => product.category))) as string[];
-  console.log(uniqueCategories);
+
+  // Extract unique categories
+  const uniqueCategories = Array.from(
+    new Set(data?.data.map((product) => product.category))
+  ) as string[];
   useEffect(() => {
     if (selectedCategory === "clearFilters") {
       dispatch(clearFilters());
@@ -52,10 +53,7 @@ const CategoryFilterDropdown = (): JSX.Element => {
             </DropdownMenuRadioItem>
 
             {uniqueCategories.map((category) => (
-              <DropdownMenuRadioItem
-                key={category}
-                value={category}
-              >
+              <DropdownMenuRadioItem key={category} value={category}>
                 {category}
               </DropdownMenuRadioItem>
             ))}

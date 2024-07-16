@@ -1,10 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
-import App from '../App';
 import routesGenerator from '../utils/routesGenerator';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import MainLayout from '../components/layout/MainLayout';
 import { homePaths } from './home.routes';
+import Dashboard from '@/components/dashboard/Dashboard';
+import { dashboardPaths } from './dashboard.routes';
 
 
 const router = createBrowserRouter([
@@ -15,8 +16,8 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <App />,
-    // children: routesGenerator(adminPaths),
+    element: <Dashboard/>,
+    children: routesGenerator(dashboardPaths),
   },
   {
     path: '/login',

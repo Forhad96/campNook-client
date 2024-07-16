@@ -5,53 +5,35 @@ import Container from "@/components/shared/Container";
 import Loader from "@/components/shared/Loader/Loader";
 import { selectCurrentUser } from "@/redux/features/auth/authSlice";
 import { useGetUserAllCartsQuery } from "@/redux/features/cart/cartApi";
-import { useAppSelector } from "@/redux/hooks";
-import { FC } from "react";
-
-const cartItems = [
-  {
-    imgSrc: "https://i.ibb.co/SX762kX/Rectangle-36-1.png",
-    imgAlt: "Black Leather Bag",
-    code: "RF293",
-    name: "North wolf bag",
-    height: "10 inches",
-    color: "Black",
-    composition: "100% calf leather",
-    price: "$1,000",
-  },
-  {
-    imgSrc: "https://i.ibb.co/c6KyDXN/Rectangle-5-1.png",
-    imgAlt: "Gray Sneakers",
-    code: "RF293",
-    name: "LW sneakers",
-    height: "10 inches",
-    color: "Black",
-    composition: "100% calf leather",
-    price: "$1,000",
-  },
-  {
-    imgSrc: "https://i.ibb.co/6gzWwSq/Rectangle-20-1.png",
-    imgAlt: "Black Leather Purse",
-    code: "RF293",
-    name: "Luxe card holder",
-    height: "10 inches",
-    color: "Black",
-    composition: "100% calf leather",
-    price: "$1,000",
-  },
-];
+import { selectTotalPrice, setTotal } from "@/redux/features/products/productSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { FC, useEffect } from "react";
 
 const Cart: FC = () => {
+  const dispatch = useAppDispatch()
   const user = useAppSelector(selectCurrentUser);
-  const { data, isLoading } = useGetUserAllCartsQuery(undefined);
+  const totalPrice = useAppSelector(selectTotalPrice);
+  console.log(totalPrice);
+
+  const { data, isLoading, } = useGetUserAllCartsQuery(undefined);
   const items = data?.data?.items as ICartItem[];
+  const total = data?.data?.totalPrice as number;
+  console.log(total);
   if (isLoading) <Loader />;
-  const calculateTotal = () => {
-    return items?.reduce(
-      (total, item) => total + item?.product?.price * item?.quantity,
-      0
-    );
-  };
+
+  // const calculateTotal = () => {
+  //   return items?.reduce(
+  //     (total, item) => total + item?.product?.price * item?.quantity,
+  //     0
+  //   );
+  // };
+
+  useEffect(()=>{
+
+    dispatch(setTotal(total))
+  },[dispatch,total])
+
+
   // console.log(items);
   return (
     <Container className=" items-center justify-center py-8">
@@ -90,7 +72,7 @@ const Cart: FC = () => {
           ))}
         </div>
 
-        <Checkout total={calculateTotal()} />
+        <Checkout total={total} />
       </div>
     </Container>
   );
