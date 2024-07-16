@@ -41,6 +41,7 @@ const productsSlice = createSlice({
       state.category = "";
       state.search = "";
       state.minPrice = "";
+      state.maxPrice = "";
     },
   },
 });

@@ -15,44 +15,50 @@ import {
 import { useAppDispatch } from "@/redux/hooks";
 import { useEffect, useState } from "react";
 
-const FilterByCategory = (): JSX.Element => {
+const CategoryFilterDropdown = (): JSX.Element => {
   const { data } = useGetAllProductsQuery({ fields: "category" });
   console.log(data);
   const dispatch = useAppDispatch();
-  const [filterValue, onFilter] = useState("");
-console.log(filterValue);
+  const [selectedCategory, handleCategoryChange] = useState("");
+// Extract unique categories
+  const uniqueCategories = Array.from(new Set(data?.data.map(product => product.category))) as string[];
+  console.log(uniqueCategories);
   useEffect(() => {
-    dispatch(setCategory({ category: filterValue }));
-  }, [filterValue, dispatch]);
+    if (selectedCategory === "clearFilters") {
+      dispatch(clearFilters());
+    } else {
+      dispatch(setCategory({ category: selectedCategory }));
+    }
+  }, [selectedCategory, dispatch]);
 
-  if (filterValue === "clearFilters") {
-    dispatch(clearFilters());
-  }
   return (
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline">
-            <FilterIcon />
+            <FilterIconSVG />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56 py-5">
-          <DropdownMenuLabel className="mb-4 ">
-            Filter category{" "}
+          <DropdownMenuLabel className="mb-4">
+            Filter category
           </DropdownMenuLabel>
-          <DropdownMenuRadioGroup value={filterValue} onValueChange={onFilter}>
-            <DropdownMenuRadioItem className="" value="">
+          <DropdownMenuRadioGroup
+            value={selectedCategory}
+            onValueChange={handleCategoryChange}
+          >
+            <DropdownMenuRadioItem className="" value="clearFilters">
               All
             </DropdownMenuRadioItem>
 
-            {data?.data.map((category) => (
-              <DropdownMenuRadioItem key={category._id} value={category.category}>
-                {category.category}
+            {uniqueCategories.map((category) => (
+              <DropdownMenuRadioItem
+                key={category}
+                value={category}
+              >
+                {category}
               </DropdownMenuRadioItem>
             ))}
-            <DropdownMenuRadioItem value="clearFilters">
-              Clear filter
-            </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -60,9 +66,9 @@ console.log(filterValue);
   );
 };
 
-export default FilterByCategory;
+export default CategoryFilterDropdown;
 
-const FilterIcon = () => {
+const FilterIconSVG = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

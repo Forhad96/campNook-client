@@ -8,12 +8,17 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
-import { useState } from "react";
+import { setPrice } from "@/redux/features/products/productSlice";
+import { useAppDispatch } from "@/redux/hooks";
+import { useEffect, useState } from "react";
 
 const FilterByPrice = (): JSX.Element => {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
-
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(setPrice({ minPrice, maxPrice }));
+  }, [minPrice, maxPrice, dispatch]);
   return (
     <div className="z-20">
       <DropdownMenu>
@@ -45,17 +50,17 @@ const FilterByPrice = (): JSX.Element => {
           </div>
           <div className="space-y-6">
             <Slider
-              defaultValue={[100]}
-              max={10000}
+              defaultValue={[Number(minPrice)]}
+              max={1000}
               step={1}
-              onValueChange={(value) => setMinPrice(value)}
+              onValueChange={(value) => setMinPrice(value.toString())}
             />
             <Slider
-              defaultValue={[minPrice]}
-              max={10000}
+              defaultValue={[Number(maxPrice)]}
+              max={1000}
               className=""
               step={1}
-              onValueChange={(value) => setMaxPrice(value)}
+              onValueChange={(value) => setMaxPrice(value.toString())}
             />
           </div>
         </DropdownMenuContent>
@@ -65,7 +70,5 @@ const FilterByPrice = (): JSX.Element => {
 };
 
 export default FilterByPrice;
-
-
 
 // export default PriceRange;
