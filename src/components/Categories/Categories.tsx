@@ -1,22 +1,10 @@
-import col6 from "/images/categories/col6.png";
-
-import iamge1 from "/images/categories/image1.png";
-
-import iamge2 from "/images/categories/image2.png";
-import iamge3 from "/images/categories/image3.png";
-import iamge4 from "/images/categories/image1.png";
-import iamge5 from "/images/categories/image5.png";
-import iamge6 from "/images/categories/image6.png";
 import Container from "../shared/Container";
 import ComHeader from "../shared/ComHeader";
 import { useGetAllProductsQuery } from "@/redux/features/products/productsApi";
 import { IProduct } from "@/components/products/types";
 import Loader from "@/components/shared/Loader/Loader";
-import { useState } from "react";
 import notFoundImg from "/not-found.jpg";
 export default function Categories() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  // const data = [iamge1, iamge2, iamge3, iamge4, iamge5,iamge6 ];
   const { data, isLoading, isFetching } = useGetAllProductsQuery(undefined);
   const products = data?.data as IProduct[];
   if (isLoading || isFetching) <Loader />;

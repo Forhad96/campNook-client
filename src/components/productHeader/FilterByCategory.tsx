@@ -20,7 +20,7 @@ const FilterByCategory = (): JSX.Element => {
   console.log(data);
   const dispatch = useAppDispatch();
   const [filterValue, onFilter] = useState("");
-
+console.log(filterValue);
   useEffect(() => {
     dispatch(setCategory({ category: filterValue }));
   }, [filterValue, dispatch]);
