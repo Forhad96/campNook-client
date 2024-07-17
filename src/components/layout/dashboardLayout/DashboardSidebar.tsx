@@ -20,12 +20,12 @@ import {
 } from "@/components/ui/card";
 
 const navigationItems = [
-  { icon: Home, text: "Dashboard", to: "/" },
-  { icon: ShoppingCart, text: "Orders", to: "orders", badge: 6 },
-  { icon: Package, text: "Products", to: "products" },
-  { icon: PlusSquare, text: "Add Product", to: "add-product" },
-  { icon: Users, text: "Customers", to: "#" },
-  { icon: LineChart, text: "Analytics", to: "#" },
+  // { icon: Home, text: "Dashboard", to: "/" },
+  // { icon: ShoppingCart, text: "Orders", to: "orders", badge: 6 },
+  { icon: Package, text: "Products", to: "products", badge: "" },
+  { icon: PlusSquare, text: "Add Product", to: "add-product", badge: "" },
+  // { icon: Users, text: "Customers", to: "#" },
+  // { icon: LineChart, text: "Analytics", to: "#" },
 ];
 
 const DashboardSidebar = () => {
@@ -55,13 +55,14 @@ const DashboardSidebar = () => {
                 {item.badge && (
                   <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
                     {item.badge}
+
                   </Badge>
                 )}
               </Link>
             ))}
           </nav>
         </div>
-        <div className="mt-auto p-4">
+        {/* <div className="mt-auto p-4">
           <Card x-chunk="dashboard-02-chunk-0">
             <CardHeader className="p-2 pt-0 md:p-4">
               <CardTitle>Upgrade to Pro</CardTitle>
@@ -76,7 +77,7 @@ const DashboardSidebar = () => {
               </Button>
             </CardContent>
           </Card>
-        </div>
+        </div> */}
       </div>
     </div>
   );

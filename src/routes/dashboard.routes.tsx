@@ -1,4 +1,5 @@
-import AddProduct from "@/components/dashboard/addProduct/AddProduct";
+
+import AddProduct from "@/pages/dashboard/AddProduct";
 import AllProducts from "@/pages/dashboard/AllProducts";
 import ProductManagement from "@/pages/ProductManagement";
 export const dashboardPaths = [
