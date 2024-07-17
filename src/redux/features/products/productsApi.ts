@@ -1,7 +1,6 @@
 import { baseApi } from "../../api/baseApi";
 
 const productApi = baseApi.injectEndpoints({
-
   endpoints: (builder) => ({
     getAllProducts: builder.query({
       query: (query) => {
@@ -12,6 +11,7 @@ const productApi = baseApi.injectEndpoints({
           params: query,
         };
       },
+      providesTags: ["product"],
     }),
     getProductById: builder.query({
       query: (id: string) => ({
@@ -22,11 +22,13 @@ const productApi = baseApi.injectEndpoints({
     createProduct: builder.mutation({
       query: (newProduct) => {
         console.log(newProduct);
-        return{
-        url: "/products",
-        method: "POST",
-        body: newProduct,
-      }},
+        return {
+          url: "/products",
+          method: "POST",
+          body: newProduct,
+        };
+      },
+      invalidatesTags: ["product"],
     }),
     updateProduct: builder.mutation({
       query: ({ id, ...updatedProduct }) => ({
@@ -34,12 +36,14 @@ const productApi = baseApi.injectEndpoints({
         method: "PUT",
         body: updatedProduct,
       }),
+      invalidatesTags: ["product"],
     }),
     deleteProduct: builder.mutation({
       query: (id: string) => ({
         url: `/products/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["product"],
     }),
   }),
 });
