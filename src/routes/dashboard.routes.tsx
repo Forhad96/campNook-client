@@ -1,6 +1,7 @@
 
 import AddProduct from "@/pages/dashboard/AddProduct";
 import AllProducts from "@/pages/dashboard/AllProducts";
+import ImageUp from "@/pages/dashboard/ImageUp";
 import ProductManagement from "@/pages/ProductManagement";
 export const dashboardPaths = [
   {
@@ -32,6 +33,11 @@ export const dashboardPaths = [
         name: "Analytics",
         path: "product",
         element: "",
+      },
+      {
+        name: "Image upload",
+        path: "uploadImage",
+        element: <ImageUp/>,
       },
     ],
   },

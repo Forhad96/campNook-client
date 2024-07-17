@@ -1,14 +1,15 @@
-// AddProductForm.tsx
+import React, { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
-import React from "react";
-import { useForm, Controller } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { useCreateProductMutation } from "@/redux/features/products/productsApi";
+import { toast } from "sonner";
+import { imageUpload } from "@/utils/ImageUpload";
 
 interface IFormInput {
   name: string;
-  image: string;
+  images: string[];
   description: string;
   price: number;
   category: string;
@@ -24,15 +25,39 @@ const ProductCategory = [
 ];
 
 const AddProduct: React.FC = () => {
+  const [createProduct, { isLoading }] = useCreateProductMutation();
+  const [images, setImages] = useState<File[]>([]);
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>();
 
-  const onSubmit = (data: IFormInput) => {
-    // Handle form submission, e.g., send data to the server
-    console.log(data);
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setImages(Array.from(e.target.files));
+    }
+  };
+
+  const onSubmit = async (data: IFormInput) => {
+    try {
+      if (images.length > 0) {
+        const imageUrls = await imageUpload(images);
+        const newProduct = {
+          ...data,
+          price: Number(data.price),
+          stock: Number(data.stock),
+          ratings: Number(data.ratings),
+          images: imageUrls,
+        };
+
+        await createProduct(newProduct);
+        toast.success("Product added successfully");
+      }
+    } catch (error) {
+      console.error("Error adding product:", error);
+      toast.error("Failed to add product");
+    }
   };
 
   return (
@@ -51,34 +76,40 @@ const AddProduct: React.FC = () => {
           name="name"
           control={control}
           defaultValue=""
-          render={({ field }) => <Input {...field} className="" required />}
+          render={({ field }) => <Input {...field} required />}
         />
         {errors.name && (
           <p className="mt-2 text-sm text-red-600">{errors.name.message}</p>
         )}
       </div>
+
       <div className="mb-4">
         <label
-          htmlFor="image"
+          htmlFor="images"
           className="block text-sm font-medium text-gray-700 mb-3"
         >
           Image
         </label>
         <Controller
-          name="image"
+          name="images"
           control={control}
-          defaultValue=""
           render={({ field }) => (
-            <Input {...field} type="file" className="" required />
+            <Input
+              {...field}
+              type="file"
+              onChange={handleImageChange}
+              multiple
+              required
+            />
           )}
         />
-        {errors.image && (
-          <p className="mt-2 text-sm text-red-600">{errors.image.message}</p>
+        {errors.images && (
+          <p className="mt-2 text-sm text-red-600">{errors.images.message}</p>
         )}
       </div>
 
-      <div className="flex items-center justify-between">
-        <div className="mb-4">
+      <div className="flex flex-wrap gap-4 mb-4">
+        <div className="flex-1">
           <label
             htmlFor="price"
             className="block text-sm font-medium text-gray-700 mb-3"
@@ -96,10 +127,10 @@ const AddProduct: React.FC = () => {
           )}
         </div>
 
-        <div className="mb-4">
+        <div className="flex-1">
           <label
             htmlFor="category"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 mb-3"
           >
             Category
           </label>
@@ -128,7 +159,7 @@ const AddProduct: React.FC = () => {
           )}
         </div>
 
-        <div className="mb-4">
+        <div className="flex-1">
           <label
             htmlFor="stock"
             className="block text-sm font-medium text-gray-700 mb-3"
@@ -146,7 +177,7 @@ const AddProduct: React.FC = () => {
           )}
         </div>
 
-        <div className="mb-4">
+        <div className="flex-1">
           <label
             htmlFor="ratings"
             className="block text-sm font-medium text-gray-700 mb-3"
@@ -168,6 +199,7 @@ const AddProduct: React.FC = () => {
           )}
         </div>
       </div>
+
       <div className="mb-4">
         <label
           htmlFor="description"
@@ -187,8 +219,13 @@ const AddProduct: React.FC = () => {
           </p>
         )}
       </div>
-      <Button type="submit" className="w-full bg-campfire-gradient">
-        Add Product
+
+      <Button
+        type="submit"
+        className="w-full bg-campfire-gradient"
+        disabled={isLoading}
+      >
+        {isLoading ? "Adding Product..." : "Add Product"}
       </Button>
     </form>
   );

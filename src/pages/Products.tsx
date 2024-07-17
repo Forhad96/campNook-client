@@ -11,36 +11,6 @@ import {
   selectMinPrice,
   selectSearch,
 } from "@/redux/features/products/productSlice";
-const products = [
-  {
-    id: 1,
-    brand: "Brand",
-    name: "Product Name",
-    price: 149,
-    originalPrice: 199,
-    imageUrl:
-      "https://images.unsplash.com/photo-1646753522408-077ef9839300?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    id: 2,
-    brand: "Brand",
-    name: "Product Name",
-    price: 149,
-    originalPrice: 199,
-    imageUrl:
-      "https://images.unsplash.com/photo-1646753522408-077ef9839300?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-  },
-  {
-    id: 3,
-    brand: "Brand",
-    name: "Product Name",
-    price: 149,
-    originalPrice: 199,
-    imageUrl:
-      "https://images.unsplash.com/photo-1646753522408-077ef9839300?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-  },
-  // Add more products here
-];
 const Products: React.FC = () => {
   const search = useAppSelector(selectSearch);
   const category = useAppSelector(selectCategory);

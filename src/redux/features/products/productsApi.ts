@@ -20,11 +20,13 @@ const productApi = baseApi.injectEndpoints({
       }),
     }),
     createProduct: builder.mutation({
-      query: (newProduct) => ({
+      query: (newProduct) => {
+        console.log(newProduct);
+        return{
         url: "/products",
         method: "POST",
         body: newProduct,
-      }),
+      }},
     }),
     updateProduct: builder.mutation({
       query: ({ id, ...updatedProduct }) => ({

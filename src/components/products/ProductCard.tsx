@@ -1,6 +1,5 @@
 import React from "react";
 import { IProduct } from "./types";
-import demoProduct from "/demoProduct.png";
 import { LoveIcon, ShoppingBagIcon, } from "../shared/Icons/Icons";
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +12,7 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
     >
 
         <img
-          src={demoProduct}
+          src={product.images[0]}
           alt={product.name}
           className="h-80 w-72 object-cover rounded-t-xl"
         />
