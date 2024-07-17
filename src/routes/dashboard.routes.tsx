@@ -1,5 +1,6 @@
-import AddProduct from '@/components/addProduct/AddProduct';
-import ProductManagement from '@/pages/ProductManagement';
+import AddProduct from "@/components/dashboard/addProduct/AddProduct";
+import AllProducts from "@/pages/dashboard/AllProducts";
+import ProductManagement from "@/pages/ProductManagement";
 export const dashboardPaths = [
   {
     name: "Dashboard",
@@ -10,6 +11,11 @@ export const dashboardPaths = [
         name: "Order",
         path: "order",
         element: "",
+      },
+      {
+        name: "Products",
+        path: "products",
+        element: <AllProducts />,
       },
       {
         name: "Add Product",

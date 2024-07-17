@@ -35,6 +35,10 @@ export const homePaths = [
     ),
   },
   {
+    name: "Dashboard",
+    path: "admin",
+  },
+  {
     name: "FAQ",
     path: "faq",
     element: <Faq />,

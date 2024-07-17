@@ -1,7 +1,7 @@
 import Banner from "@/components/banner/Banner";
-import Activity from "../components/Activity/Activity";
+import Activity from "../components/activity/Activity";
 import Benefit from "../components/benefit/Benefit";
-import Categories from "../components/Categories/Categories";
+import Categories from "../components/categories/Categories";
 import BestSelling from "@/components/bestSelling/BestSelling";
 import Testimonials from "@/components/testimonials/Testimonials";
 const Home = () => {
