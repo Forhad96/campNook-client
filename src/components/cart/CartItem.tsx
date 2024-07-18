@@ -2,12 +2,25 @@ import { FC, memo } from "react";
 import { ICartItem } from "./types";
 
 import ChooseQuantity from "./ChooseQuantity";
+import { useDeleteCartMutation } from "@/redux/features/cart/cartApi";
+import Loader from "../shared/Loader/Loader";
+import { toast } from "sonner";
 
 type CartItemProps = ICartItem & { email: string | undefined };
 
-const CartItem: FC<CartItemProps> = memo(({ product, quantity,email}) => {
-  const { images, name, description, price, stock,_id } = product;
-
+const CartItem: FC<CartItemProps> = memo(({ product, quantity }) => {
+  const { images, name, description, price, stock, _id } = product;
+  const [deleteCartItem, { isLoading, isSuccess }] = useDeleteCartMutation();
+  if (isLoading) {
+    return <Loader />;
+  }
+  const handleDeleteCartItem = async (id: string) => {
+    const res =await deleteCartItem(id);
+    console.log(res);
+    if(isSuccess){
+      toast.success(res.data.success)
+    }
+  };
   return (
     <div className="md:flex items-stretch py-8 md:py-10 lg:py-8 border-t border-gray-50">
       <div className="md:w-4/12 2xl:w-1/4 w-full">
@@ -46,7 +59,10 @@ const CartItem: FC<CartItemProps> = memo(({ product, quantity,email}) => {
             <p className="text-xs leading-3 underline text-gray-800 dark:text-white cursor-pointer">
               Add to favorites
             </p>
-            <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
+            <p
+              onClick={() => handleDeleteCartItem(_id)}
+              className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
+            >
               Remove
             </p>
           </div>
@@ -60,4 +76,3 @@ const CartItem: FC<CartItemProps> = memo(({ product, quantity,email}) => {
 });
 
 export default CartItem;
-

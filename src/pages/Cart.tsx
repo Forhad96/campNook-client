@@ -5,21 +5,22 @@ import Container from "@/components/shared/Container";
 import Loader from "@/components/shared/Loader/Loader";
 import { selectCurrentUser } from "@/redux/features/auth/authSlice";
 import { useGetUserAllCartsQuery } from "@/redux/features/cart/cartApi";
-import { selectTotalPrice, setTotal } from "@/redux/features/products/productSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { FC, useEffect } from "react";
+import {  useAppSelector } from "@/redux/hooks";
+import { FC } from "react";
 
 const Cart: FC = () => {
-  const dispatch = useAppDispatch()
+
   const user = useAppSelector(selectCurrentUser);
-  const totalPrice = useAppSelector(selectTotalPrice);
-  console.log(totalPrice);
+
 
   const { data, isLoading, } = useGetUserAllCartsQuery(undefined);
   const items = data?.data?.items as ICartItem[];
   const total = data?.data?.totalPrice as number;
   console.log(total);
-  if (isLoading) <Loader />;
+  if (isLoading){
+    return<Loader />;
+
+  } 
 
   // const calculateTotal = () => {
   //   return items?.reduce(
@@ -27,12 +28,6 @@ const Cart: FC = () => {
   //     0
   //   );
   // };
-
-  useEffect(()=>{
-
-    dispatch(setTotal(total))
-  },[dispatch,total])
-
 
   // console.log(items);
   return (

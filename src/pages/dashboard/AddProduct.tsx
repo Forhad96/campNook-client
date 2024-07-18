@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useCreateProductMutation } from "@/redux/features/products/productsApi";
 import { toast } from "sonner";
 import { imageUpload } from "@/utils/ImageUpload";
+import Loader from "@/components/shared/Loader/Loader";
 
 interface IFormInput {
   name: string;
@@ -32,7 +33,9 @@ const AddProduct: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>();
-
+  if (isLoading) {
+    return <Loader />;
+  }
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       setImages(Array.from(e.target.files));
@@ -53,6 +56,9 @@ const AddProduct: React.FC = () => {
 
         await createProduct(newProduct);
         toast.success("Product added successfully");
+        if (isLoading) {
+          return <Loader />;
+        }
       }
     } catch (error) {
       console.error("Error adding product:", error);

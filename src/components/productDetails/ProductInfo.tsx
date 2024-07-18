@@ -1,14 +1,16 @@
-import { FC, useCallback, useEffect } from "react";
+import { FC, useCallback } from "react";
 import { IProduct } from "../products/types";
 import { ShoppingBagPlusIcon } from "../shared/Icons/Icons";
 import { Button } from "../ui/button";
 import { useAddToCartMutation } from "@/redux/features/cart/cartApi";
-import Loader from "../shared/Loader/Loader";
+
 import { toast } from "sonner";
 
 const ProductInfo = ({ name, category, price, _id }: IProduct) => (
   <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
     <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">{name}</h1>
+    <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">{category}</h1>
+
     <div className="mt-5 flex items-center">
       <div className="flex items-center">
         {[...Array(5)].map((_, index) => (
@@ -47,7 +49,11 @@ const ProductOptions = () => (
   </>
 );
 
-const OptionSelector = ({ title, options, name }) => (
+const OptionSelector: FC<{
+  title: string;
+  options: string[];
+  name: string;
+}> = ({ title, options, name }) => (
   <>
     <h2 className="mt-8 text-base text-gray-900">{title}</h2>
     <div className="mt-3 flex select-none flex-wrap items-center gap-1">
@@ -73,7 +79,7 @@ const PriceAndAddToCart: FC<{ price: number; id: string }> = ({
   price,
   id,
 }) => {
-  const [addToCart, { data, isError, isLoading, isSuccess }] =
+  const [addToCart, { isError, isLoading, isSuccess }] =
     useAddToCartMutation();
 
   const handleAddToCart = useCallback(() => {

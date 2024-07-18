@@ -22,15 +22,8 @@ const ArrowIconRight = ({
   </svg>
 );
 
-const ArrowIconLeft = ({
-  width = 40,
-  height = 40,
-  fillCircle = "#FAFAFA",
-  fillPath = "#1C1C1C",
-}) => (
+const ArrowIconLeft = () => (
   <svg
-    width={width}
-    height={height}
     viewBox="0 0 40 40"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -48,12 +41,7 @@ const ArrowIconLeft = ({
     />
   </svg>
 );
-const ButtonRightArrow = ({
-  width = 40,
-  height = 40,
-  fillCircle = "#FAFAFA",
-  fillPath = "#1C1C1C",
-}) => (
+const ButtonRightArrow = () => (
   <svg
     width="20"
     height="16"

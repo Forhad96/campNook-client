@@ -4,7 +4,6 @@ import { IProduct } from "../products/types";
 import Loader from "../shared/Loader/Loader";
 import notFoundImg from "/not-found.jpg";
 import ComHeader from "../shared/ComHeader";
-import { Button } from "../ui/button";
 import ComButton from "../shared/ComButton";
 
 const BestSelling = () => {

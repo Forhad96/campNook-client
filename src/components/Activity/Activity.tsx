@@ -1,10 +1,6 @@
 import ComHeader from "../shared/ComHeader";
 import Container from "../shared/Container";
 import activitybg from "/vectorSvg/activity.svg";
-import wildlife from "/vectorSvg/wildlife.svg";
-import hiking from "/vectorSvg/hiking.svg";
-import cnoneing from "/vectorSvg/cnoneing.svg";
-import bonefire from "/vectorSvg/bonefire.svg";
 const Activity = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const activities = [

@@ -17,6 +17,7 @@ const cartApi = baseApi.injectEndpoints({
         method: "POST",
         body: payload,
       }),
+      invalidatesTags: ["cart"],
     }),
 
     updateCart: builder.mutation({
@@ -35,6 +36,7 @@ const cartApi = baseApi.injectEndpoints({
         url: `/carts/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["cart"],
     }),
   }),
 });

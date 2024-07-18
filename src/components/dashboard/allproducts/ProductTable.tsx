@@ -13,17 +13,25 @@ import { FC } from "react";
 import { IProduct } from "@/components/products/types";
 import { useDeleteProductMutation } from "@/redux/features/products/productsApi";
 import { toast } from "sonner";
+import Loader from "@/components/shared/Loader/Loader";
 
 const ProductTable: FC<{ product: IProduct }> = ({ product }) => {
-//   console.log(product);
+  //   console.log(product);
   const [deleteProduct, { isError, isLoading, isSuccess }] =
     useDeleteProductMutation();
+        if (isLoading) {
+          return <Loader/>
+        }
   const handleDelete = async (id: string) => {
     const res = await deleteProduct(id);
     console.log(res);
     if (isSuccess) {
       toast.success("product deleted successfully");
     }
+    if (isError) {
+      toast.error("Something wrong..");
+    }
+    
   };
   return (
     <TableBody>

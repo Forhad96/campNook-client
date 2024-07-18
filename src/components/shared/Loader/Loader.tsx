@@ -1,6 +1,6 @@
 const Loader = () => {
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center justify-center h-screen absolute inset-0">
         <svg
           viewBox="0 0 24 24"
           fill="none"

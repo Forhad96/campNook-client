@@ -1,6 +1,7 @@
-import  { FC, memo, useState, useCallback } from "react";
+import { FC, memo, useState, useCallback } from "react";
 import { DecrementIcon, IncrementIcon } from "../shared/Icons/Icons";
 import { useUpdateCartMutation } from "@/redux/features/cart/cartApi";
+import Loader from "../shared/Loader/Loader";
 
 const ChooseQuantity: FC<{
   quantity: number;
@@ -8,7 +9,7 @@ const ChooseQuantity: FC<{
   productId: string;
 }> = memo(({ quantity, stock, productId }) => {
   const [updateQuantity, setUpdateQuantity] = useState(quantity);
-  const [updateItemQuantity, { data, isSuccess, isError, isLoading }] =
+  const [updateItemQuantity, { isSuccess, isError, isLoading }] =
     useUpdateCartMutation();
   // console.log(productId,data);
 
@@ -27,9 +28,9 @@ const ChooseQuantity: FC<{
       updateItemQuantity({ product: productId, quantity: newQuantity });
     }
   }, [updateQuantity, productId, updateItemQuantity]);
-
-
-
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
     <>
       <label htmlFor="counter-input" className="sr-only">

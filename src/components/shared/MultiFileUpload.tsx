@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // src/FileUpload.tsx
 import React, { useState, useRef, useCallback } from "react";
 
@@ -35,7 +36,7 @@ console.log(files);
     }
   };
 
-  const handleDragLeave = (e: React.DragEvent) => {
+  const handleDragLeave = () => {
     setDragCounter((prev) => prev - 1);
     if (dragCounter === 1) {
       overlayRef.current?.classList.remove("draggedover");

@@ -44,24 +44,6 @@ const CommonSlider: React.FC<CommonSliderProps> = ({
 }) => {
   const modules = [Pagination, Navigation, FreeMode, Autoplay];
 
-  const breakpoints = {
-    "@0.00": {
-      slidesPerView: 1,
-      spaceBetween: 10,
-    },
-    "@0.75": {
-      slidesPerView: 2,
-      spaceBetween: 10,
-    },
-    "@1.00": {
-      slidesPerView: 3,
-      spaceBetween: 10,
-    },
-    "@1.50": {
-      slidesPerView: slidesPerView,
-      spaceBetween: 30,
-    },
-  };
 
   return (
     <div className={`${className}`}>
@@ -90,7 +72,7 @@ const CommonSlider: React.FC<CommonSliderProps> = ({
         pagination={{
           el: `.common-swiper-pagination-${sliderId}`,
           clickable: true,
-          renderBullet: (index, className) =>
+          renderBullet: ( className) =>
             `<span class="${className} w-3 h-3 bg-primary rounded-full mx-1"></span>`,
         }}
         className={`swiper-container commonSwiper ${className}`}

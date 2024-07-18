@@ -7,6 +7,7 @@ import { RootState } from "../store";
 import { logout, setUser } from "../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
+  // baseUrl: "https://campnook-server.vercel.app/api/v1/",
   baseUrl: "http://localhost:5000/api/v1",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
@@ -27,10 +28,14 @@ const baseQueryWithRefreshToken: BaseQueryFn = async (
   console.log(result);
   if (result?.error?.status == 401) {
     console.log("something happen");
-    const res = await fetch("http://localhost:5000/api/v1/auth/refresh-token", {
-      method: "POST",
-      credentials: "include",
-    });
+    const res = await fetch(
+      // "https://campnook-server.vercel.app/api/v1/auth/refresh-token",
+      "http://localhost:5000/api/v1/carts/auth/refresh-token",
+      {
+        method: "POST",
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
     console.log(data?.data?.accessToken);
@@ -54,6 +59,6 @@ const baseQueryWithRefreshToken: BaseQueryFn = async (
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithRefreshToken,
-  tagTypes: ["cart","product"],
+  tagTypes: ["cart", "product"],
   endpoints: () => ({}),
 });

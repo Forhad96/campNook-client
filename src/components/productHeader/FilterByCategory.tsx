@@ -19,16 +19,21 @@ const CategoryFilterDropdown = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const { data } = useGetAllProductsQuery({ fields: "category" });
   const [selectedCategory, handleCategoryChange] = useState("");
-
+  const categories = data?.data;
+  console.log(categories);
   // Extract unique categories
   const uniqueCategories = Array.from(
-    new Set(data?.data.map((product) => product.category))
+    new Set(data?.data.map((product: { category: string }) => product.category))
   ) as string[];
   useEffect(() => {
     if (selectedCategory === "clearFilters") {
       dispatch(clearFilters());
     } else {
-      dispatch(setCategory({ category: selectedCategory }));
+      dispatch(
+        setCategory({
+          category: selectedCategory,
+        })
+      );
     }
   }, [selectedCategory, dispatch]);
 

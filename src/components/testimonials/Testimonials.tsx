@@ -75,7 +75,7 @@ export default function Testimonials() {
         </div>
         <div className="mt-6">
           <ul className="flex gap-x-3 justify-center">
-            {testimonials.map((item, idx) => (
+            {testimonials.map((_item, idx) => (
               <li key={idx}>
                 <button
                   className={`w-2.5 h-2.5 rounded-full duration-150 ring-offset-2 ring-brandPrimary focus:ring ${

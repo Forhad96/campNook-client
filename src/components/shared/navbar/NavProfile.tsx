@@ -31,7 +31,6 @@ export default function NavProfile() {
 }
 
 
-import React from "react";
 import { UserIcon } from "../Icons/Icons";
 
 export  function AvatarRoundedFullSmBadgeBottomIcon() {

@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const ProductTabs:FC = ({name,description}) => (
+const ProductTabs:FC<{name:string,description:string}> = ({name,description}) => (
   <div className="lg:col-span-3">
     <div className="border-b border-gray-300">
       <nav className="flex gap-4">
