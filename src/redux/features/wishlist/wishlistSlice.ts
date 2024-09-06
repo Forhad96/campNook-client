@@ -13,7 +13,7 @@ const initialState: TProductState = {
 };
 
 const wishlistSlice = createSlice({
-  name: "auth",
+  name: "wishlist",
   initialState,
   reducers: {
     setSearch: (state, action: PayloadAction<string>) => {

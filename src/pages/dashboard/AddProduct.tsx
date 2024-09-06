@@ -7,6 +7,14 @@ import { useCreateProductMutation } from "@/redux/features/products/productsApi"
 import { toast } from "sonner";
 import { imageUpload } from "@/utils/ImageUpload";
 import Loader from "@/components/shared/Loader/Loader";
+import {  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue, } from "@/components/ui/select";
+import { useGetAllCategoriesQuery } from "@/redux/features/category/categoryApi";
 
 interface IFormInput {
   name: string;
@@ -17,15 +25,21 @@ interface IFormInput {
   stock: number;
   ratings: number;
 }
-
-const ProductCategory = [
-  { value: "Footwear", label: "Footwear" },
-  { value: "Clothing", label: "Clothing" },
-  { value: "Accessories", label: "Accessories" },
-  // Add more categories as needed
-];
+ interface TCategory {
+  name: string;
+  description: string;
+  image: string;
+}
+// const ProductCategory = [
+//   { value: "Footwear", label: "Footwear" },
+//   { value: "Clothing", label: "Clothing" },
+//   { value: "Accessories", label: "Accessories" },
+//   // Add more categories as needed
+// ];
 
 const AddProduct: React.FC = () => {
+    const { data: productCategory } = useGetAllCategoriesQuery(undefined);
+    console.log(productCategory);
   const [createProduct, { isLoading }] = useCreateProductMutation();
   const [images, setImages] = useState<File[]>([]);
   const {
@@ -53,7 +67,6 @@ const AddProduct: React.FC = () => {
           ratings: Number(data.ratings),
           images: imageUrls,
         };
-
         await createProduct(newProduct);
         toast.success("Product added successfully");
         if (isLoading) {
@@ -134,8 +147,8 @@ const AddProduct: React.FC = () => {
         </div>
 
         <div className="flex-1">
-          <label
-            htmlFor="category"
+           <label
+            htmlFor="price"
             className="block text-sm font-medium text-gray-700 mb-3"
           >
             Category
@@ -145,26 +158,23 @@ const AddProduct: React.FC = () => {
             control={control}
             defaultValue=""
             render={({ field }) => (
-              <select
-                {...field}
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                required
-              >
-                {ProductCategory.map((category) => (
-                  <option key={category.value} value={category.value}>
-                    {category.label}
-                  </option>
-                ))}
-              </select>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select a category" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    {productCategory?.data?.map((category:TCategory) => (
+                      <SelectItem key={category.name} value={category.name}>
+                        {category.name}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             )}
           />
-          {errors.category && (
-            <p className="mt-2 text-sm text-red-600">
-              {errors.category.message}
-            </p>
-          )}
         </div>
-
         <div className="flex-1">
           <label
             htmlFor="stock"

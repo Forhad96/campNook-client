@@ -40,8 +40,7 @@ const Products: React.FC = () => {
   }
 
   const { data } = useGetAllProductsQuery(query);
-  console.log({ query });
-  console.log({ data });
+
   return (
     <Container>
       <ProductHeader />
