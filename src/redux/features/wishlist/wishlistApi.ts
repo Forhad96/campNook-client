@@ -4,7 +4,7 @@ const cartApi = baseApi.injectEndpoints({
     getUserWishlist: builder.query({
       query: (payload) => {
         return {
-          url: `/wishlist`,
+          url: `/wishlist/my-wishlist`,
           method: "GET",
           body: payload,
         };
@@ -31,7 +31,18 @@ const cartApi = baseApi.injectEndpoints({
   }),
 });
 export const {
-useAddToWishlistMutation,
-useGetUserWishlistQuery,
-useRemoveFormWishlistMutation
+  useAddToWishlistMutation,
+  useGetUserWishlistQuery,
+  useRemoveFormWishlistMutation,
 } = cartApi;
+
+
+// {
+//   "user":"669b41d114c56e72543786bc",
+//   "items":[
+//     {
+//       "product":"669b59455945c9b2cbe47de0",
+//       "quantity":1
+//     }
+//   ]
+// }

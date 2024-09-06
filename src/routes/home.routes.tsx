@@ -5,6 +5,7 @@ import Faq from "../components/faq/Faq";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
+import Wishlist from "@/pages/Wishlist";
 
 export const homePaths = [
   {
@@ -31,6 +32,15 @@ export const homePaths = [
     element: (
       <ProtectedRoute>
         <Cart />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    name: "Wishlist",
+    path: "wishlist",
+    element: (
+      <ProtectedRoute>
+        <Wishlist/>
       </ProtectedRoute>
     ),
   },

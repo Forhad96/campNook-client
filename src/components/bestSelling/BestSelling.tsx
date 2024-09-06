@@ -5,8 +5,10 @@ import Loader from "../shared/Loader/Loader";
 import notFoundImg from "/not-found.jpg";
 import ComHeader from "../shared/ComHeader";
 import ComButton from "../shared/ComButton";
+import { useNavigate } from "react-router-dom";
 
 const BestSelling = () => {
+    const navigate = useNavigate();
   const { data, isLoading, isFetching } = useGetAllProductsQuery(undefined);
   const products = data?.data as IProduct[];
   if (isLoading || isFetching) <Loader />;
@@ -79,7 +81,7 @@ const BestSelling = () => {
           ))}
         </div>
       </div>
-      <div className="mt-8 text-center">
+      <div onClick={()=>navigate('/products')} className="mt-8 text-center">
         <ComButton className="border-2 border-brandPrimary">See More</ComButton>
       </div>
     </div>
