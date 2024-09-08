@@ -30,16 +30,9 @@ interface IFormInput {
   description: string;
   image: string;
 }
-// const ProductCategory = [
-//   { value: "Footwear", label: "Footwear" },
-//   { value: "Clothing", label: "Clothing" },
-//   { value: "Accessories", label: "Accessories" },
-//   // Add more categories as needed
-// ];
 
 const AddProduct: React.FC = () => {
     const { data: productCategory } = useGetAllCategoriesQuery(undefined);
-    console.log(productCategory);
   const [createProduct, { isLoading }] = useCreateProductMutation();
   const [images, setImages] = useState<File[]>([]);
   const {

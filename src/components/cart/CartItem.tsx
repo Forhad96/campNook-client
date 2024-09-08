@@ -10,6 +10,7 @@ type CartItemProps = ICartItem & { email: string | undefined };
 
 const CartItem: FC<CartItemProps> = memo(({ product, quantity }) => {
   const { images, name, description, price, stock, _id } = product;
+
   const [deleteCartItem, { isLoading, isSuccess }] = useDeleteCartMutation();
   if (isLoading) {
     return <Loader />;

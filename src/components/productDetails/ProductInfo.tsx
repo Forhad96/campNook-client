@@ -1,6 +1,6 @@
 import { FC, useCallback } from "react";
 import { IProduct } from "../products/types";
-import { ShoppingBagPlusIcon } from "../shared/Icons/Icons";
+import { LoveIcon, ShoppingBagPlusIcon } from "../shared/Icons/Icons";
 import { Button } from "../ui/button";
 import { useAddToCartMutation } from "@/redux/features/cart/cartApi";
 
@@ -27,53 +27,17 @@ const ProductInfo = ({ name, category, price, _id }: IProduct) => (
       </div>
       <p className="ml-2 text-sm font-medium text-gray-500">1,209 Reviews</p>
     </div>
-    <ProductOptions />
+
     <PriceAndAddToCart price={price} id={_id} />
+    
     <ProductFeatures />
   </div>
 );
 export default ProductInfo;
 
-const ProductOptions = () => (
-  <>
-    <OptionSelector
-      title="Select Payment Methods"
-      options={["Stripe", "Bkash", "Nogod"]}
-      name="type"
-    />
-    {/* <OptionSelector
-      title="Choose subscription"
-      options={["4 Months", "8 Months", "12 Months"]}
-      name="subscription"
-    /> */}
-  </>
-);
 
-const OptionSelector: FC<{
-  title: string;
-  options: string[];
-  name: string;
-}> = ({ title, options, name }) => (
-  <>
-    <h2 className="mt-8 text-base text-gray-900">{title}</h2>
-    <div className="mt-3 flex select-none flex-wrap items-center gap-1">
-      {options.map((option, index) => (
-        <label key={index}>
-          <input
-            type="radio"
-            name={name}
-            value={option}
-            className="peer sr-only"
-            defaultChecked={index === 0}
-          />
-          <p className="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">
-            {option}
-          </p>
-        </label>
-      ))}
-    </div>
-  </>
-);
+
+
 
 const PriceAndAddToCart: FC<{ price: number; id: string }> = ({
   price,
@@ -99,6 +63,15 @@ const PriceAndAddToCart: FC<{ price: number; id: string }> = ({
         <h1 className="text-3xl font-bold">${price}</h1>
         {/* <span className="text-base">/month</span> */}
       </div>
+      <div className="flex items-center justify-center gap-2">
+        <Button
+          type="button"
+          onClick={handleAddToCart}
+          className="bg-red-600  text-white hover:text-brandPrimary hover:bg-highlight/60"
+          disabled={isLoading}
+        >
+          <LoveIcon/> Add wishlist
+        </Button>
       <Button
         type="button"
         onClick={handleAddToCart}
@@ -107,6 +80,7 @@ const PriceAndAddToCart: FC<{ price: number; id: string }> = ({
       >
         <ShoppingBagPlusIcon /> Add to cart
       </Button>
+      </div>
     </div>
   );
 };

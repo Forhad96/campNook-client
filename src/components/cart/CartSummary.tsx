@@ -1,9 +1,10 @@
 import { FC } from "react";
-type TCheckoutProps ={
-  total:number
-}
-const Checkout:FC<TCheckoutProps> = ({total}) => {
-
+import { useNavigate } from "react-router-dom";
+type TCheckoutProps = {
+  total: number;
+};
+const CartSummary: FC<TCheckoutProps> = ({ total }) => {
+  const navigate = useNavigate();
 
   return (
     <div className="lg:w-96 md:w-8/12 w-full bg-gray-100 dark:bg-gray-900 h-full">
@@ -46,7 +47,10 @@ const Checkout:FC<TCheckoutProps> = ({total}) => {
               ${total}
             </p>
           </div>
-          <button className="text-base leading-none w-full py-5 bg-brandSecondary border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700">
+          <button
+            onClick={() => navigate("/checkout")}
+            className="text-base leading-none w-full py-5 bg-brandSecondary border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
+          >
             Checkout
           </button>
         </div>
@@ -54,4 +58,4 @@ const Checkout:FC<TCheckoutProps> = ({total}) => {
     </div>
   );
 };
-export default Checkout
+export default CartSummary;

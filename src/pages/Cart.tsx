@@ -1,5 +1,5 @@
 import CartItem from "@/components/cart/CartItem";
-import Checkout from "@/components/cart/Checkout";
+import CartSummary from "@/components/cart/CartSummary";
 import { ICartItem } from "@/components/cart/types";
 import Container from "@/components/shared/Container";
 import Loader from "@/components/shared/Loader/Loader";
@@ -16,20 +16,12 @@ const Cart: FC = () => {
   const { data, isLoading, } = useGetUserAllCartsQuery(undefined);
   const items = data?.data?.items as ICartItem[];
   const total = data?.data?.totalPrice as number;
-  console.log(total);
+  // console.log(total);
   if (isLoading){
     return<Loader />;
 
   } 
-
-  // const calculateTotal = () => {
-  //   return items?.reduce(
-  //     (total, item) => total + item?.product?.price * item?.quantity,
-  //     0
-  //   );
-  // };
-
-  // console.log(items);
+console.log(items);
   return (
     <Container className=" items-center justify-center py-8">
       <div className="flex items-end lg:flex-row flex-col justify-end">
@@ -67,7 +59,7 @@ const Cart: FC = () => {
           ))}
         </div>
 
-        <Checkout total={total} />
+        <CartSummary total={total} />
       </div>
     </Container>
   );
